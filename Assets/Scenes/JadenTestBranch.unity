@@ -687,6 +687,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1Prefab: {fileID: 3297392955621445126, guid: 76b53fd8dfae5b74d91f8a247895b7ba, type: 3}
   player2Prefab: {fileID: 7093553485270074356, guid: a56d9a321c93e82449c587d4f4af78ff, type: 3}
+  player1Camera: {fileID: 3454462996829638936, guid: ce042ca7e461bac41a005a03a80f9095, type: 3}
+  player2Camera: {fileID: 6727190371093894935, guid: 5c55e0288ea47ef4ebef319a7dfedbad, type: 3}
   spawnPoints:
   - {fileID: 1172533315}
   - {fileID: 1945279090}
