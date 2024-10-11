@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    private Vector2 moveInput;
     public float cameraRotationSpeed = 5f; // Speed at which the camera rotates
     private Camera playerCamera; // Reference to the player's camera
     public int playerNumber; // 1 for Player 1, 2 for Player 2
@@ -21,15 +20,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnEnable()
-    {
-        // Subscribe to input events
-        var playerControls = new PlayerControls();
-        playerControls.Player1.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
-        playerControls.Player1.Move.canceled += ctx => moveInput = Vector2.zero;
-        playerControls.Enable();
-    }
-
     void Update()
     {
         // Determine the input axes based on player number
@@ -40,7 +30,7 @@ public class PlayerController : MonoBehaviour
         float moveZ = Input.GetAxis(verticalAxis);
 
         // Calculate movement direction
-        Vector3 move = new Vector3(moveInput.x, 0, moveInput.y) * moveSpeed * Time.deltaTime;
+        Vector3 move = new Vector3(0, 0, moveZ) * moveSpeed * Time.deltaTime;
         transform.Translate(move);
 
         // Rotate the camera based on horizontal movement
