@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         float moveZ = Input.GetAxis(verticalAxis);
 
         // Calculate movement direction
-        Vector3 move = new Vector3(moveX, 0, moveZ).normalized * moveSpeed * Time.deltaTime;
+        Vector3 move = new Vector3(0, 0, moveZ).normalized * moveSpeed * Time.deltaTime;
 
         // Move the player
         transform.Translate(move);
@@ -43,13 +43,9 @@ public class PlayerController : MonoBehaviour
 
     void RotateCamera(float moveX)
     {
-        // Calculate the rotation angle based on horizontal movement
-        float rotationAngle = moveX > 0 ? 180 : -180; // Adjust as needed
+        float rotationAngle = moveX > 0 ? 40 * cameraRotationSpeed * Time.deltaTime : -40 * cameraRotationSpeed * Time.deltaTime; // Adjust as needed
 
-        // Create a target rotation
-        Quaternion targetRotation = Quaternion.Euler(0, rotationAngle, 0);
-
-        // Smoothly rotate the camera to the target rotation
-        transform.rotation = Quaternion.Slerp(playerCamera.transform.rotation, targetRotation, cameraRotationSpeed * Time.deltaTime);
+        // Increment the current rotation
+        transform.rotation *= Quaternion.Euler(0, rotationAngle, 0);
     }
 }
