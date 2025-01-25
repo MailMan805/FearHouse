@@ -16,7 +16,7 @@ public class GenManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rooms = Resources.LoadAll<GameObject>("Rooms");
+        rooms = Resources.LoadAll<GameObject>("HaydenRooms");
         GameObject genRoom = Instantiate(rooms[0]) as GameObject;
         Vector3 spawn = new Vector3(0, 0, 0);
         genRoom.transform.position = spawn;
