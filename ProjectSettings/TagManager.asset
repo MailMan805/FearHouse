@@ -6,11 +6,13 @@ TagManager:
   tags:
   - Node
   - Offset
+  - Bounds
+  - Root
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Overlap
   - Water
   - UI
   - 
