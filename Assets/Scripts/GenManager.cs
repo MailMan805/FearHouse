@@ -10,16 +10,41 @@ public class GenManager : MonoBehaviour
     public GameObject[] rooms;
     // a changing list that represents all open nodes
     public GameObject[] availableNodes;
+    // a changing list that represents all rooms
+    List<GameObject> rootParts = new List<GameObject>();
+    // variable representing location in rootParts<> index
+    private int kidNamedFinger = 0;
     // the count of tokens spent to generate rooms
     public int tokens = 1;
+    // LayerMask for overlap check
+    public LayerMask Overlap;
 
     // Start is called before the first frame update
     void Start()
     {
-        rooms = Resources.LoadAll<GameObject>("HaydenRooms");
+        // targets the Overlap LayerMask for overlap detection
+        rooms = Resources.LoadAll<GameObject>("Rooms");
         GameObject genRoom = Instantiate(rooms[0]) as GameObject;
         Vector3 spawn = new Vector3(0, 0, 0);
         genRoom.transform.position = spawn;
+        rootParts.Add(genRoom);
+        GameObject[] genColliders = GameObject.FindGameObjectsWithTag("Bounds");
+        List<GameObject> newColliders = new List<GameObject>();
+        foreach (GameObject collider in genColliders)
+        {
+            if (collider.GetComponent<ColliderData>().newCollider)
+            {
+                newColliders.Add(collider);
+                collider.GetComponent<ColliderData>().newCollider = false;
+                Debug.Log("added new collider " + collider);
+            }
+        }
+        foreach (GameObject collider in newColliders)
+        {
+            collider.GetComponent<ColliderData>().rootIndex = kidNamedFinger;
+        }
+        kidNamedFinger++; //increases rootIndex
+
         availableNodes = GameObject.FindGameObjectsWithTag("Node");
         foreach (GameObject node in availableNodes)
         {
@@ -55,7 +80,18 @@ public class GenManager : MonoBehaviour
                     Debug.Log("added new node " + node);
                 }
             }
-
+            GameObject[] genColliders = GameObject.FindGameObjectsWithTag("Bounds");
+            List<GameObject> newColliders = new List<GameObject>();
+            foreach (GameObject collider in genColliders)
+            {
+                if (collider.GetComponent<ColliderData>().newCollider)
+                {
+                    newColliders.Add(collider);
+                    collider.GetComponent<ColliderData>().newCollider = false;
+                    Debug.Log("added new collider " + collider);
+                }
+            }
+            bool colliding = false;
             if (selectedNode.GetComponent<NodeData>().east)
             {
                 Debug.Log("if east worked!");
@@ -68,24 +104,43 @@ public class GenManager : MonoBehaviour
                         Debug.Log(deltaPosition);
                         genRoom.transform.position += deltaPosition;
                         Debug.Log(genRoom.transform.position);
-                        if (genRoom.transform.position == new Vector3(0, 0, 0)) // deletes rooms and refunds tokens that could go beyond the start room
+                        foreach (GameObject collider in newColliders)
+                        {
+                            Collider[] overlapDetector = Physics.OverlapBox(collider.transform.position, collider.transform.localScale / 2, Quaternion.identity, Overlap);
+                            if (overlapDetector.Length > 0)
+                            {
+                                colliding = true;
+                            }
+                        }
+                        
+                        if (colliding) // deletes rooms if any Overlap boxes overlap
                         {
                             Debug.Log("destroyed room, out of bounds, refunded token cost " + genRoom.GetComponent<RoomData>().tokenCost);
                             tokens += genRoom.GetComponent<RoomData>().tokenCost;
                             Destroy(genRoom);
                         } else
                         {
+                            // insert root index
+                            rootParts.Add(genRoom);
+                            foreach (GameObject collider in newColliders)
+                            {
+                                collider.GetComponent<ColliderData>().rootIndex = kidNamedFinger;
+                            }
+                            kidNamedFinger++; //increases rootIndex
                             // checks node positions against eachother and then removes nodes with identical positions.
                             availableNodes = GameObject.FindGameObjectsWithTag("Node");
                             for (int i = 0; i < availableNodes.Length; i++)
                             {
-                                for (int j = i+1; j < availableNodes.Length-1; j++)
+                                if (availableNodes[i] != null)
                                 {
-                                    if (availableNodes[i] != null && availableNodes[j] != null && availableNodes[i].transform.position == availableNodes[j].transform.position)
+                                    for (int j = i + 1; j < availableNodes.Length - 1; j++)
                                     {
-                                        Debug.Log("Destroyed used Nodes");
-                                        Destroy(availableNodes[i]);
-                                        Destroy(availableNodes[j]);
+                                        if (availableNodes[i] != null && availableNodes[j] != null && availableNodes[i].transform.position == availableNodes[j].transform.position)
+                                        {
+                                            Debug.Log("Destroyed used Nodes");
+                                            Destroy(availableNodes[i]);
+                                            Destroy(availableNodes[j]);
+                                        }
                                     }
                                 }
                             }
@@ -104,7 +159,15 @@ public class GenManager : MonoBehaviour
                         Debug.Log(deltaPosition);
                         genRoom.transform.position += deltaPosition;
                         Debug.Log(genRoom.transform.position);
-                        if (genRoom.transform.position == new Vector3(0, 0, 0)) // deletes rooms and refunds tokens that could go beyond the start room
+                        foreach (GameObject collider in newColliders)
+                        {
+                            Collider[] overlapDetector = Physics.OverlapBox(collider.transform.position, collider.transform.localScale / 2, Quaternion.identity, Overlap);
+                            if (overlapDetector.Length > 0)
+                            {
+                                colliding = true;
+                            }
+                        }
+                        if (colliding) // deletes rooms if any Overlap boxes overlap
                         {
                             Debug.Log("destroyed room, out of bounds, refunded token cost " + genRoom.GetComponent<RoomData>().tokenCost);
                             tokens += genRoom.GetComponent<RoomData>().tokenCost;
@@ -112,17 +175,27 @@ public class GenManager : MonoBehaviour
                         }
                         else
                         {
+                            // insert root index
+                            rootParts.Add(genRoom);
+                            foreach (GameObject collider in newColliders)
+                            {
+                                collider.GetComponent<ColliderData>().rootIndex = kidNamedFinger;
+                            }
+                            kidNamedFinger++; //increases rootIndex
                             // checks node positions against eachother and then removes nodes with identical positions.
                             availableNodes = GameObject.FindGameObjectsWithTag("Node");
                             for (int i = 0; i < availableNodes.Length; i++)
                             {
-                                for (int j = i + 1; j < availableNodes.Length - 1; j++)
+                                if (availableNodes[i] != null)
                                 {
-                                    if (availableNodes[i] != null && availableNodes[j] != null && availableNodes[i].transform.position == availableNodes[j].transform.position)
+                                    for (int j = i + 1; j < availableNodes.Length - 1; j++)
                                     {
-                                        Debug.Log("Destroyed used Nodes");
-                                        Destroy(availableNodes[i]);
-                                        Destroy(availableNodes[j]);
+                                        if (availableNodes[i] != null && availableNodes[j] != null && availableNodes[i].transform.position == availableNodes[j].transform.position)
+                                        {
+                                            Debug.Log("Destroyed used Nodes");
+                                            Destroy(availableNodes[i]);
+                                            Destroy(availableNodes[j]);
+                                        }
                                     }
                                 }
                             }
@@ -141,7 +214,15 @@ public class GenManager : MonoBehaviour
                         Debug.Log(deltaPosition);
                         genRoom.transform.position += deltaPosition;
                         Debug.Log(genRoom.transform.position);
-                        if (genRoom.transform.position == new Vector3(0, 0, 0)) // deletes rooms and refunds tokens that could go beyond the start room
+                        foreach (GameObject collider in newColliders)
+                        {
+                            Collider[] overlapDetector = Physics.OverlapBox(collider.transform.position, collider.transform.localScale / 2, Quaternion.identity, Overlap);
+                            if (overlapDetector.Length > 0)
+                            {
+                                colliding = true;
+                            }
+                        }
+                        if (colliding) // deletes rooms if any Overlap boxes overlap
                         {
                             Debug.Log("destroyed room, out of bounds, refunded token cost " + genRoom.GetComponent<RoomData>().tokenCost);
                             tokens += genRoom.GetComponent<RoomData>().tokenCost;
@@ -149,17 +230,27 @@ public class GenManager : MonoBehaviour
                         }
                         else
                         {
+                            // insert root index
+                            rootParts.Add(genRoom);
+                            foreach (GameObject collider in newColliders)
+                            {
+                                collider.GetComponent<ColliderData>().rootIndex = kidNamedFinger;
+                            }
+                            kidNamedFinger++; //increases rootIndex
                             // checks node positions against eachother and then removes nodes with identical positions.
                             availableNodes = GameObject.FindGameObjectsWithTag("Node");
                             for (int i = 0; i < availableNodes.Length; i++)
                             {
-                                for (int j = i + 1; j < availableNodes.Length - 1; j++)
+                                if (availableNodes[i] != null)
                                 {
-                                    if (availableNodes[i] != null && availableNodes[j] != null && availableNodes[i].transform.position == availableNodes[j].transform.position)
+                                    for (int j = i + 1; j < availableNodes.Length - 1; j++)
                                     {
-                                        Debug.Log("Destroyed used Nodes");
-                                        Destroy(availableNodes[i]);
-                                        Destroy(availableNodes[j]);
+                                        if (availableNodes[i] != null && availableNodes[j] != null && availableNodes[i].transform.position == availableNodes[j].transform.position)
+                                        {
+                                            Debug.Log("Destroyed used Nodes");
+                                            Destroy(availableNodes[i]);
+                                            Destroy(availableNodes[j]);
+                                        }
                                     }
                                 }
                             }
@@ -178,7 +269,15 @@ public class GenManager : MonoBehaviour
                         Debug.Log(deltaPosition);
                         genRoom.transform.position += deltaPosition;
                         Debug.Log(genRoom.transform.position);
-                        if (genRoom.transform.position == new Vector3(0, 0, 0)) // deletes rooms and refunds tokens that could go beyond the start room
+                        foreach (GameObject collider in newColliders)
+                        {
+                            Collider[] overlapDetector = Physics.OverlapBox(collider.transform.position, collider.transform.localScale / 2, Quaternion.identity, Overlap);
+                            if (overlapDetector.Length > 0)
+                            {
+                                colliding = true;
+                            }
+                        }
+                        if (colliding) // deletes rooms if any Overlap boxes overlap
                         {
                             Debug.Log("destroyed room, out of bounds, refunded token cost " + genRoom.GetComponent<RoomData>().tokenCost);
                             tokens += genRoom.GetComponent<RoomData>().tokenCost;
@@ -186,17 +285,27 @@ public class GenManager : MonoBehaviour
                         }
                         else
                         {
+                            // insert root index
+                            rootParts.Add(genRoom);
+                            foreach (GameObject collider in newColliders)
+                            {
+                                collider.GetComponent<ColliderData>().rootIndex = kidNamedFinger;
+                            }
+                            kidNamedFinger++; //increases rootIndex
                             // checks node positions against eachother and then removes nodes with identical positions.
                             availableNodes = GameObject.FindGameObjectsWithTag("Node");
                             for (int i = 0; i < availableNodes.Length; i++)
                             {
-                                for (int j = i + 1; j < availableNodes.Length - 1; j++)
+                                if (availableNodes[i] != null)
                                 {
-                                    if (availableNodes[i] != null && availableNodes[j] != null && availableNodes[i].transform.position == availableNodes[j].transform.position)
+                                    for (int j = i + 1; j < availableNodes.Length - 1; j++)
                                     {
-                                        Debug.Log("Destroyed used Nodes");
-                                        Destroy(availableNodes[i]);
-                                        Destroy(availableNodes[j]);
+                                        if (availableNodes[i] != null && availableNodes[j] != null && availableNodes[i].transform.position == availableNodes[j].transform.position)
+                                        {
+                                            Debug.Log("Destroyed used Nodes");
+                                            Destroy(availableNodes[i]);
+                                            Destroy(availableNodes[j]);
+                                        }
                                     }
                                 }
                             }
@@ -205,6 +314,7 @@ public class GenManager : MonoBehaviour
                 }
             }
 
+
         } else
         {
             Destroy(genRoom);
@@ -212,8 +322,37 @@ public class GenManager : MonoBehaviour
 
     }
 
+    private void cleaner()
+    {
+        GameObject[] staticRoots = new GameObject[rootParts.Count];
+        GameObject[] colliders = GameObject.FindGameObjectsWithTag("Bounds");
+        
+        for (int i = 0;i < staticRoots.Length;i++)
+        {
+            staticRoots[i] = rootParts[i];
+        }
+        
+        for(int i = 1;i < colliders.Length;i++)
+        {
+            if (colliders[i] != null)
+            {
+                Collider[] overlapDetector = Physics.OverlapBox(colliders[i].transform.position, colliders[i].transform.localScale / 2, Quaternion.identity, Overlap);
+                if (overlapDetector.Length > 0 && colliders[i].GetComponent<ColliderData>().rootIndex != 0)
+                {
+                    Debug.Log("deleted room at index" + colliders[i].GetComponent<ColliderData>().rootIndex);
+                    Destroy(staticRoots[colliders[i].GetComponent<ColliderData>().rootIndex]);
+                }
+                else
+                {
+                    Debug.Log("Succeed deez nuts");
+                }
+            }
+        }
+
+    }
+
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
         if (tokens > 0)
@@ -226,17 +365,35 @@ public class GenManager : MonoBehaviour
             availableNodes = GameObject.FindGameObjectsWithTag("Node");
             for (int i = 0; i < availableNodes.Length; i++)
             {
-                for (int j = i + 1; j < availableNodes.Length - 1; j++)
+                if (availableNodes[i] != null)
                 {
-                    if (availableNodes[i] != null && availableNodes[j] != null && availableNodes[i].transform.position == availableNodes[j].transform.position)
+                    for (int j = i + 1; j < availableNodes.Length - 1; j++)
                     {
-                        Debug.Log("Destroyed used Nodes");
-                        Destroy(availableNodes[i]);
-                        Destroy(availableNodes[j]);
+                        if (availableNodes[i] != null && availableNodes[j] != null && availableNodes[i].transform.position == availableNodes[j].transform.position)
+                        {
+                            Debug.Log("Destroyed used Nodes");
+                            Destroy(availableNodes[i]);
+                            Destroy(availableNodes[j]);
+                        }
                     }
                 }
-            }
+            } // cleaner is obsolete
+            //if (tokens == 0)
+            //{
+            //    availableNodes = GameObject.FindGameObjectsWithTag("Node");
+            //    foreach (GameObject node in availableNodes)
+            //    {
+            //        Destroy(node);
+            //    }
+            //    GameObject[] colliders = GameObject.FindGameObjectsWithTag("Bounds");
+            //    foreach (GameObject collider in colliders)
+            //    {
+            //        Destroy(collider);
+            //    }
+            //}
         }
+       
+
 
         // if round end : deleteRooms();
     }

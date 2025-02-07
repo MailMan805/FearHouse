@@ -170,6 +170,9 @@ MonoBehaviour:
   rooms: []
   availableNodes: []
   tokens: 100
+  Overlap:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &1430131726
 GameObject:
   m_ObjectHideFlags: 0
