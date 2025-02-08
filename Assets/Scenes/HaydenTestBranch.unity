@@ -155,6 +155,9 @@ MonoBehaviour:
   rooms: []
   availableNodes: []
   tokens: 100
+  Overlap:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!4 &237277095
 Transform:
   m_ObjectHideFlags: 0

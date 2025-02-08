@@ -23,7 +23,7 @@ public class GenManager : MonoBehaviour
     void Start()
     {
         // targets the Overlap LayerMask for overlap detection
-        rooms = Resources.LoadAll<GameObject>("Rooms");
+        rooms = Resources.LoadAll<GameObject>("HaydenRooms");
         GameObject genRoom = Instantiate(rooms[0]) as GameObject;
         Vector3 spawn = new Vector3(0, 0, 0);
         genRoom.transform.position = spawn;
@@ -378,19 +378,19 @@ public class GenManager : MonoBehaviour
                     }
                 }
             } // cleaner is obsolete
-            //if (tokens == 0)
-            //{
-            //    availableNodes = GameObject.FindGameObjectsWithTag("Node");
-            //    foreach (GameObject node in availableNodes)
-            //    {
-            //        Destroy(node);
-            //    }
-            //    GameObject[] colliders = GameObject.FindGameObjectsWithTag("Bounds");
-            //    foreach (GameObject collider in colliders)
-            //    {
-            //        Destroy(collider);
-            //    }
-            //}
+            if (tokens == 0)
+            {
+                availableNodes = GameObject.FindGameObjectsWithTag("Node");
+                foreach (GameObject node in availableNodes)
+                {
+                    Destroy(node);
+                }
+                GameObject[] colliders = GameObject.FindGameObjectsWithTag("Bounds");
+                foreach (GameObject collider in colliders)
+                {
+                    Destroy(collider);
+                }
+            }
         }
        
 
