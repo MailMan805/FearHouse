@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public Camera player2Camera; // Assign the camera here
     public Transform[] spawnPoints; // Set up spawn points in the scene
 
-    void Start()
+    void Awake()
     {
         SpawnPlayers();
     }
