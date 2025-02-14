@@ -17,7 +17,6 @@ public class AgentRaccControls : MonoBehaviour
         Rigidbody rigidBody = bullet.GetComponent<Rigidbody>();
         if (rigidBody != null)
         {
-            //This causes the bullets to be shot at a bizarre angle when not moving, so the quaternion logic should probably be changed
             Vector3 shootDirection = Quaternion.AngleAxis(angleOffset, Vector3.up) * transform.forward;
             rigidBody.velocity = shootDirection * speed;
         }
