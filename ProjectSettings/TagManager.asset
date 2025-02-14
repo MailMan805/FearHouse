@@ -3,12 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Node
+  - Offset
+  - Bounds
+  - Root
+  - PGPoint
+  - Sheild
+  - Needle
+  - Pine
+  - Racc
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Overlap
   - Water
   - UI
   - 
