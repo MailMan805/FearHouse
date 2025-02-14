@@ -31,8 +31,8 @@ public class AgentRaccControls : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Shoot(0,12);
-            Shoot(15,8);
-            Shoot(-15,8);
+            Shoot(5,8);
+            Shoot(-5,8);
             GetComponent<AudioSource>().Play();
         }
     }
