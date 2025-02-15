@@ -23,7 +23,7 @@ public class GenManager : MonoBehaviour
     void Start()
     {
         // targets the Overlap LayerMask for overlap detection
-        rooms = Resources.LoadAll<GameObject>("Rooms");
+        rooms = Resources.LoadAll<GameObject>("Valerie");
         GameObject genRoom = Instantiate(rooms[0]) as GameObject;
         Vector3 spawn = new Vector3(0, 0, 0);
         genRoom.transform.position = spawn;
