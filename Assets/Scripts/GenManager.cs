@@ -378,19 +378,19 @@ public class GenManager : MonoBehaviour
                     }
                 }
             } // cleaner is obsolete
-            if (tokens == 0)
-            {
-                availableNodes = GameObject.FindGameObjectsWithTag("Node");
-                foreach (GameObject node in availableNodes)
-                {
-                    Destroy(node);
-                }
-                GameObject[] colliders = GameObject.FindGameObjectsWithTag("Bounds");
-                foreach (GameObject collider in colliders)
-                {
-                    Destroy(collider);
-                }
-            }
+            //if (tokens == 0)
+            //{
+            //    availableNodes = GameObject.FindGameObjectsWithTag("Node");
+            //    foreach (GameObject node in availableNodes)
+            //    {
+            //        Destroy(node);
+            //    }
+            //    GameObject[] colliders = GameObject.FindGameObjectsWithTag("Bounds");
+            //    foreach (GameObject collider in colliders)
+            //    {
+            //        Destroy(collider);
+            //    }
+            //}
         }
        
 
