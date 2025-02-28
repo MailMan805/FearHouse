@@ -52,6 +52,7 @@ public class LampAI : MonoBehaviour
 
         if (playerInRange && !hasJumped && distanceToTarget <= detectionRange)
         {
+            GetComponent<AudioSource>().Play();
             StartCoroutine(PerformJumpSequence(target));
         }
     }
@@ -87,11 +88,6 @@ public class LampAI : MonoBehaviour
         if (hasLunged && !isExploding && (collision.gameObject.CompareTag("Pine") || collision.gameObject.CompareTag("Racc")))
         {
             StartCoroutine(Explode());
-        }
-        PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-        if (playerHealth != null)
-        {
-            playerHealth.TakeDamage(explosionDamage);
         }
     }
 

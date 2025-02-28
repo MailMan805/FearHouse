@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 4330944568797109824}
   - component: {fileID: 2162654493629267559}
   - component: {fileID: 4996098720671008379}
-  - component: {fileID: 6837647628524082283}
+  - component: {fileID: 7589901894171967625}
   - component: {fileID: 4081934610996148093}
   m_Layer: 0
   m_Name: Agent Racc
@@ -369,7 +369,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6837647628524082283
+--- !u!114 &7589901894171967625
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -378,10 +378,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7093553485270074356}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c72fffb44c9a3124d9d5ca5e0e318210, type: 3}
+  m_Script: {fileID: 11500000, guid: ce89d92f17a251647ae8ec9dce97235b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  maxHealth: 75
+  attackDamage: 0
 --- !u!65 &4081934610996148093
 BoxCollider:
   m_ObjectHideFlags: 0
