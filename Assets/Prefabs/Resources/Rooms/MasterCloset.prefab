@@ -619,6 +619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newCollider: 1
+  rootIndex: 0
 --- !u!1 &3316226758721721911
 GameObject:
   m_ObjectHideFlags: 0
