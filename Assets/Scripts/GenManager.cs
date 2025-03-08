@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -16,6 +17,8 @@ public class GenManager : MonoBehaviour
     private int kidNamedFinger = 0;
     // the count of tokens spent to generate rooms
     public int tokens = 1;
+    // base token count from previous round
+    private int roundTokens;
     // LayerMask for overlap check
     public LayerMask Overlap;
     // zero zero zero
@@ -28,9 +31,13 @@ public class GenManager : MonoBehaviour
     {
         // targets the Overlap LayerMask for overlap detection
         rooms = Resources.LoadAll<GameObject>("Rooms");
+
+        roundTokens = tokens;
+
         GameObject genRoom = Instantiate(rooms[0]) as GameObject;
         genRoom.transform.position = spawn;
         rootParts.Add(genRoom);
+
         genColliders = GameObject.FindGameObjectsWithTag("Bounds");
         List<GameObject> newColliders = new List<GameObject>();
         foreach (GameObject collider in genColliders)
@@ -42,6 +49,7 @@ public class GenManager : MonoBehaviour
                 Debug.Log("added new collider " + collider);
             }
         }
+
         foreach (GameObject collider in newColliders)
         {
             collider.GetComponent<ColliderData>().rootIndex = kidNamedFinger;
@@ -57,6 +65,7 @@ public class GenManager : MonoBehaviour
                 //Debug.Log("starting node no longer new " + node);
             }
         }
+
         Debug.Log(availableNodes);
     }
 
@@ -141,8 +150,14 @@ public class GenManager : MonoBehaviour
                                         if (availableNodes[i] != null && availableNodes[j] != null && availableNodes[i].transform.position == availableNodes[j].transform.position)
                                         {
                                             Debug.Log("Destroyed used Nodes");
-                                            Destroy(availableNodes[i]);
-                                            Destroy(availableNodes[j]);
+                                            if (!availableNodes[i].GetComponent<NodeData>().isStart)
+                                            {
+                                                Destroy(availableNodes[i]);
+                                            }
+                                            if (!availableNodes[j].GetComponent<NodeData>().isStart)
+                                            {
+                                                Destroy(availableNodes[j]);
+                                            }
                                         }
                                     }
                                 }
@@ -195,8 +210,14 @@ public class GenManager : MonoBehaviour
                                         if (availableNodes[i] != null && availableNodes[j] != null && availableNodes[i].transform.position == availableNodes[j].transform.position)
                                         {
                                             Debug.Log("Destroyed used Nodes");
-                                            Destroy(availableNodes[i]);
-                                            Destroy(availableNodes[j]);
+                                            if (!availableNodes[i].GetComponent<NodeData>().isStart)
+                                            {
+                                                Destroy(availableNodes[i]);
+                                            }
+                                            if (!availableNodes[j].GetComponent<NodeData>().isStart)
+                                            {
+                                                Destroy(availableNodes[j]);
+                                            }
                                         }
                                     }
                                 }
@@ -249,8 +270,14 @@ public class GenManager : MonoBehaviour
                                         if (availableNodes[i] != null && availableNodes[j] != null && availableNodes[i].transform.position == availableNodes[j].transform.position)
                                         {
                                             Debug.Log("Destroyed used Nodes");
-                                            Destroy(availableNodes[i]);
-                                            Destroy(availableNodes[j]);
+                                            if (!availableNodes[i].GetComponent<NodeData>().isStart)
+                                            {
+                                                Destroy(availableNodes[i]);
+                                            }
+                                            if (!availableNodes[j].GetComponent<NodeData>().isStart)
+                                            {
+                                                Destroy(availableNodes[j]);
+                                            }
                                         }
                                     }
                                 }
@@ -303,8 +330,14 @@ public class GenManager : MonoBehaviour
                                         if (availableNodes[i] != null && availableNodes[j] != null && availableNodes[i].transform.position == availableNodes[j].transform.position)
                                         {
                                             Debug.Log("Destroyed used Nodes");
-                                            Destroy(availableNodes[i]);
-                                            Destroy(availableNodes[j]);
+                                            if (!availableNodes[i].GetComponent<NodeData>().isStart)
+                                            {
+                                                Destroy(availableNodes[i]);
+                                            }
+                                            if (!availableNodes[j].GetComponent<NodeData>().isStart)
+                                            {
+                                                Destroy(availableNodes[j]);
+                                            }
                                         }
                                     }
                                 }
@@ -319,6 +352,22 @@ public class GenManager : MonoBehaviour
         {
             Destroy(genRoom);
         }
+
+    }
+
+    public void reGenerate()
+    {
+        GameObject[] allRooms = GameObject.FindGameObjectsWithTag("Root");
+        foreach (GameObject room in allRooms)
+        {
+            if (!room.GetComponent<RoomData>().isStart)
+            {
+                Destroy(room);
+            }
+        }
+
+        tokens = roundTokens + 10;
+        roundTokens = tokens;
 
     }
 
@@ -365,22 +414,30 @@ public class GenManager : MonoBehaviour
             availableNodes = GameObject.FindGameObjectsWithTag("Node");
 
             // cleaner is obsolete
-            if (tokens == 0)
-            {
-                availableNodes = GameObject.FindGameObjectsWithTag("Node");
-                foreach (GameObject node in availableNodes)
-                {
-                    Destroy(node);
-                }
-                GameObject[] colliders = GameObject.FindGameObjectsWithTag("Bounds");
-                foreach (GameObject collider in colliders)
-                {
-                    Destroy(collider);
-                }
-            }
-        }
-       
+            //if (tokens == 0)
+            //{
+            //    availableNodes = GameObject.FindGameObjectsWithTag("Node");
+            //    foreach (GameObject node in availableNodes)
+            //    {
+            //        if (!node.GetComponent<NodeData>().isStart)
+            //        {
+            //            Destroy(node);
+            //        }
+                    
+            //    }
+            //    GameObject[] colliders = GameObject.FindGameObjectsWithTag("Bounds");
+            //    foreach (GameObject collider in colliders)
+            //    {
+            //        Destroy(collider);
+            //    }
+            //}
 
+        }
+        // reGenerates the map
+        if (Input.GetKey(KeyCode.E) && tokens == 0)
+        {
+            reGenerate();
+        }
 
         // if round end : deleteRooms();
     }

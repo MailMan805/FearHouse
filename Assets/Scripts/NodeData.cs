@@ -10,6 +10,7 @@ public class NodeData : MonoBehaviour
     public bool east = false;
     public bool west = false;
     public bool newNode = true;
+    public bool isStart = false;
 
     // Start is called before the first frame update
     //void Start()
