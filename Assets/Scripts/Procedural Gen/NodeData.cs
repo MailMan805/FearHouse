@@ -11,6 +11,8 @@ public class NodeData : MonoBehaviour
     public bool west = false;
     public bool newNode = true;
 
+    public bool isUsable = true;
+
     // Start is called before the first frame update
     //void Start()
     //{

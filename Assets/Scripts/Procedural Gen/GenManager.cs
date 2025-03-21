@@ -75,6 +75,7 @@ public class GenManager : MonoBehaviour
         {
             tokens -= genRoom.GetComponent<RoomData>().tokenCost;
             GameObject selectedNode = availableNodes[Random.Range(0, availableNodes.Length)];
+
             genRoom.transform.position = selectedNode.transform.position;
 
             GameObject[] genNodes = GameObject.FindGameObjectsWithTag("Node");
@@ -111,7 +112,7 @@ public class GenManager : MonoBehaviour
                         {
                             Vector3 deltaPosition = genRoom.transform.position - node.transform.position;
                             genRoom.transform.position += deltaPosition;
-                            yield return StartCoroutine(DelayedOverlapCheck(genRoom, newColliders));
+                            yield return StartCoroutine(DelayedOverlapCheck(genRoom, newColliders, selectedNode, node));
                         }
                     }
                 }
@@ -126,7 +127,7 @@ public class GenManager : MonoBehaviour
                         {
                             Vector3 deltaPosition = genRoom.transform.position - node.transform.position;
                             genRoom.transform.position += deltaPosition;
-                            yield return StartCoroutine(DelayedOverlapCheck(genRoom, newColliders));
+                            yield return StartCoroutine(DelayedOverlapCheck(genRoom, newColliders, selectedNode, node));
                         }
                     }
                 }
@@ -141,7 +142,7 @@ public class GenManager : MonoBehaviour
                         {
                             Vector3 deltaPosition = genRoom.transform.position - node.transform.position;
                             genRoom.transform.position += deltaPosition;
-                            yield return StartCoroutine(DelayedOverlapCheck(genRoom, newColliders));
+                            yield return StartCoroutine(DelayedOverlapCheck(genRoom, newColliders, selectedNode, node));
                         }
                     }
                         
@@ -157,7 +158,7 @@ public class GenManager : MonoBehaviour
                         {
                             Vector3 deltaPosition = genRoom.transform.position - node.transform.position;
                             genRoom.transform.position += deltaPosition;
-                            yield return StartCoroutine(DelayedOverlapCheck(genRoom, newColliders));
+                            yield return StartCoroutine(DelayedOverlapCheck(genRoom, newColliders, selectedNode, node));
                         }
                     }
                 }
@@ -221,11 +222,11 @@ public class GenManager : MonoBehaviour
                 {
                     if(node.GetComponent<NodeData>().south || node.GetComponent<NodeData>().north)
                     {
-                        Instantiate(NorthSouthWallPrefab, node.transform.position, Quaternion.identity);
+                        Instantiate(NorthSouthWallPrefab, node.transform.position, NorthSouthWallPrefab.transform.rotation);
                     }
-                    if (node.GetComponent<NodeData>().south || node.GetComponent<NodeData>().north)
+                    else if (node.GetComponent<NodeData>().east || node.GetComponent<NodeData>().west)
                     {
-                        Instantiate(EastWestWallPrefab, node.transform.position, Quaternion.identity);
+                        Instantiate(EastWestWallPrefab, node.transform.position, EastWestWallPrefab.transform.rotation);
                     }
                     Destroy(node);
                 }
@@ -241,7 +242,7 @@ public class GenManager : MonoBehaviour
 
         // if round end : deleteRooms();
     }
-    IEnumerator DelayedOverlapCheck(GameObject genRoom, List<GameObject> newColliders)
+    IEnumerator DelayedOverlapCheck(GameObject genRoom, List<GameObject> newColliders, GameObject node, GameObject otherNode)
     {
         //yield return new WaitForFixedUpdate(); // Wait for physics update
 
@@ -251,7 +252,7 @@ public class GenManager : MonoBehaviour
         {
             Collider[] overlapDetector = Physics.OverlapBox(collider.transform.position, collider.transform.localScale / 1.899f, Quaternion.identity, Overlap);
             Debug.Log(collider.transform.localScale / 1.9f);
-            if (overlapDetector.Length > 0)
+            if (overlapDetector.Length > 0 || !node.GetComponent<NodeData>().isUsable || !otherNode.GetComponent<NodeData>().isUsable)
             {
                 colliding = true;
             }
