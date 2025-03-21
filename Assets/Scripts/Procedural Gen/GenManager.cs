@@ -1,0 +1,292 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.UIElements;
+
+public class GenManager : MonoBehaviour
+{
+    // the array of rooms
+    public GameObject[] rooms;
+    // a changing list that represents all open nodes
+    public GameObject[] availableNodes;
+    // a changing list that represents all rooms
+    List<GameObject> rootParts = new List<GameObject>();
+    // variable representing location in rootParts<> index
+    private int kidNamedFinger = 0;
+    // the count of tokens spent to generate rooms
+    public int tokens = 1;
+    // LayerMask for overlap check
+    public LayerMask Overlap;
+    // zero zero zero
+    Vector3 spawn = new Vector3(0, 1, 0);
+    GameObject[] genColliders;
+    // Start is called before the first frame update
+    private bool isGenerating = false;
+
+    public GameObject EastWestWallPrefab;
+    public GameObject NorthSouthWallPrefab;
+
+
+    void Start()
+    {
+        // targets the Overlap LayerMask for overlap detection
+        rooms = Resources.LoadAll<GameObject>("Rooms");
+        GameObject genRoom = Instantiate(rooms[0]) as GameObject;
+        genRoom.transform.position = spawn;
+        rootParts.Add(genRoom);
+        genColliders = GameObject.FindGameObjectsWithTag("Bounds");
+        List<GameObject> newColliders = new List<GameObject>();
+        foreach (GameObject collider in genColliders)
+        {
+            if (collider.GetComponent<ColliderData>().newCollider)
+            {
+                newColliders.Add(collider);
+                collider.GetComponent<ColliderData>().newCollider = false;
+                Debug.Log("added new collider " + collider);
+            }
+        }
+        foreach (GameObject collider in newColliders)
+        {
+            collider.GetComponent<ColliderData>().rootIndex = kidNamedFinger;
+        }
+        kidNamedFinger++; //increases rootIndex
+
+        availableNodes = GameObject.FindGameObjectsWithTag("Node");
+        foreach (GameObject node in availableNodes)
+        {
+            if (node.GetComponent<NodeData>().newNode)
+            {
+                node.GetComponent<NodeData>().newNode = false;
+                //Debug.Log("starting node no longer new " + node);
+            }
+        }
+        Debug.Log(availableNodes);
+    }
+
+    // generates rooms using tokens of a quantity relative to room size using nodes as positions for new rooms
+    IEnumerator GenerateRooms()
+    {
+
+        isGenerating = true; // Lock generation
+
+        GameObject genRoom = Instantiate(rooms[Random.Range(1, rooms.Length)]) as GameObject;
+        if (tokens - genRoom.GetComponent<RoomData>().tokenCost >= 0)
+        {
+            tokens -= genRoom.GetComponent<RoomData>().tokenCost;
+            GameObject selectedNode = availableNodes[Random.Range(0, availableNodes.Length)];
+
+            genRoom.transform.position = selectedNode.transform.position;
+
+            GameObject[] genNodes = GameObject.FindGameObjectsWithTag("Node");
+            List<GameObject> offsetNodes = new List<GameObject>();
+            foreach (GameObject node in genNodes)
+            {
+                if (node.GetComponent<NodeData>().newNode)
+                {
+                    offsetNodes.Add(node);
+                    node.GetComponent<NodeData>().newNode = false;
+                    Debug.Log("added new node " + node);
+                }
+            }
+            genColliders = GameObject.FindGameObjectsWithTag("Bounds");
+            List<GameObject> newColliders = new List<GameObject>();
+            foreach (GameObject collider in genColliders)
+            {
+                if (collider.GetComponent<ColliderData>().newCollider)
+                {
+                    newColliders.Add(collider);
+                    collider.GetComponent<ColliderData>().newCollider = false;
+                    Debug.Log("added new collider " + collider);
+                }
+            }
+
+            if (selectedNode.GetComponent<NodeData>().east)
+            {
+                Debug.Log("if east worked!");
+                foreach (GameObject node in offsetNodes)
+                {
+                    if (node != null)
+                    {
+                        if (node.GetComponent<NodeData>().west)
+                        {
+                            Vector3 deltaPosition = genRoom.transform.position - node.transform.position;
+                            genRoom.transform.position += deltaPosition;
+                            yield return StartCoroutine(DelayedOverlapCheck(genRoom, newColliders, selectedNode, node));
+                        }
+                    }
+                }
+            }
+            else if (selectedNode.GetComponent<NodeData>().west)
+            {
+                foreach (GameObject node in offsetNodes)
+                {
+                    if (node != null)
+                    {
+                        if (node.GetComponent<NodeData>().east)
+                        {
+                            Vector3 deltaPosition = genRoom.transform.position - node.transform.position;
+                            genRoom.transform.position += deltaPosition;
+                            yield return StartCoroutine(DelayedOverlapCheck(genRoom, newColliders, selectedNode, node));
+                        }
+                    }
+                }
+            }
+            else if (selectedNode.GetComponent<NodeData>().north)
+            {
+                foreach (GameObject node in offsetNodes)
+                {
+                    if (node != null)
+                    {
+                        if (node.GetComponent<NodeData>().south)
+                        {
+                            Vector3 deltaPosition = genRoom.transform.position - node.transform.position;
+                            genRoom.transform.position += deltaPosition;
+                            yield return StartCoroutine(DelayedOverlapCheck(genRoom, newColliders, selectedNode, node));
+                        }
+                    }
+                        
+                }
+            }
+            else if (selectedNode.GetComponent<NodeData>().south)
+            {
+                foreach (GameObject node in offsetNodes)
+                {
+                    if(node != null)
+                    {
+                        if (node.GetComponent<NodeData>().north)
+                        {
+                            Vector3 deltaPosition = genRoom.transform.position - node.transform.position;
+                            genRoom.transform.position += deltaPosition;
+                            yield return StartCoroutine(DelayedOverlapCheck(genRoom, newColliders, selectedNode, node));
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            Destroy(genRoom);
+        }
+
+        yield return new WaitForSeconds(.1f); // Small delay to ensure smooth execution
+        isGenerating = false; // Unlock generation
+    }
+
+    private void cleaner()
+    {
+        GameObject[] staticRoots = new GameObject[rootParts.Count];
+        GameObject[] colliders = GameObject.FindGameObjectsWithTag("Bounds");
+
+        for (int i = 0; i < staticRoots.Length; i++)
+        {
+            staticRoots[i] = rootParts[i];
+        }
+
+        for (int i = 1; i < colliders.Length; i++)
+        {
+            if (colliders[i] != null)
+            {
+                Collider[] overlapDetector = Physics.OverlapBox(colliders[i].transform.position, colliders[i].transform.localScale / 2, Quaternion.identity, Overlap);
+                if (overlapDetector.Length > 0 && colliders[i].GetComponent<ColliderData>().rootIndex != 0)
+                {
+                    Debug.Log("deleted room at index" + colliders[i].GetComponent<ColliderData>().rootIndex);
+                    Destroy(staticRoots[colliders[i].GetComponent<ColliderData>().rootIndex]);
+                }
+                else
+                {
+                    Debug.Log("Succeed deez nuts");
+                }
+            }
+        }
+
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+
+        if (tokens > 0 && !isGenerating)
+        {
+            Debug.Log("Assigned new availableNodes array");
+            availableNodes = GameObject.FindGameObjectsWithTag("Node");
+
+            // double checks overlaping nodes
+            StartCoroutine(GenerateRooms()); // Call coroutine instead of direct function
+
+            // cleaner is obsolete
+            if (tokens == 0)
+            {
+                availableNodes = GameObject.FindGameObjectsWithTag("Node");
+                foreach (GameObject node in availableNodes)
+                {
+                    if(node.GetComponent<NodeData>().south || node.GetComponent<NodeData>().north)
+                    {
+                        Instantiate(NorthSouthWallPrefab, node.transform.position, NorthSouthWallPrefab.transform.rotation);
+                    }
+                    else if (node.GetComponent<NodeData>().east || node.GetComponent<NodeData>().west)
+                    {
+                        Instantiate(EastWestWallPrefab, node.transform.position, EastWestWallPrefab.transform.rotation);
+                    }
+                    Destroy(node);
+                }
+                GameObject[] colliders = GameObject.FindGameObjectsWithTag("Bounds");
+                foreach (GameObject collider in colliders)
+                {
+                    Destroy(collider);
+                }
+            }
+        }
+
+
+
+        // if round end : deleteRooms();
+    }
+    IEnumerator DelayedOverlapCheck(GameObject genRoom, List<GameObject> newColliders, GameObject node, GameObject otherNode)
+    {
+        //yield return new WaitForFixedUpdate(); // Wait for physics update
+
+        bool colliding = false;
+
+        foreach (GameObject collider in newColliders)
+        {
+            Collider[] overlapDetector = Physics.OverlapBox(collider.transform.position, collider.transform.localScale / 1.899f, Quaternion.identity, Overlap);
+            Debug.Log(collider.transform.localScale / 1.9f);
+            if (overlapDetector.Length > 0 || !node.GetComponent<NodeData>().isUsable || !otherNode.GetComponent<NodeData>().isUsable)
+            {
+                colliding = true;
+            }
+
+        }
+        
+
+        if (colliding) // deletes rooms if any Overlap boxes overlap
+        {
+            Debug.Log("destroyed room, out of bounds, refunded token cost " + genRoom.GetComponent<RoomData>().tokenCost);
+            tokens += genRoom.GetComponent<RoomData>().tokenCost;
+            Destroy(genRoom);
+        }
+        else
+        {
+            // insert root index
+            rootParts.Add(genRoom);
+            availableNodes = GameObject.FindGameObjectsWithTag("Node");
+            for (int i = 0; i < availableNodes.Length; i++)
+            {
+                if (availableNodes[i] != null)
+                {
+                    for (int j = i + 1; j < availableNodes.Length - 1; j++)
+                    {
+                        if (availableNodes[i] != null && availableNodes[j] != null && availableNodes[i].transform.position == availableNodes[j].transform.position)
+                        {
+                            Debug.Log("Destroyed used Nodes");
+                            Destroy(availableNodes[i]);
+                            Destroy(availableNodes[j]);
+                        }
+                    }
+                }
+            }
+        }
+        yield return null;
+    }
+}

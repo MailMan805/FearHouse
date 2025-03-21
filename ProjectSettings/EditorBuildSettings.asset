@@ -6,9 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/Nate_Test Scene.unity
     guid: 3492d6b423a1bea4cad946df157fcc80
   - enabled: 1
     path: Assets/Scenes/Nate_Transition.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
+=======
+    path: Assets/Scenes/ToriUITest.unity
+    guid: a4d38116437f1af40902d0a1e4664547
+  - enabled: 1
+    path: Assets/Scenes/KarlTestScene.unity
+    guid: 2d60c132663905d4a88bb8b9281574a9
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: c54496d2ac303304f85e2680cada2811, type: 2}
+>>>>>>> origin/JadenPainter-9/6/2024
