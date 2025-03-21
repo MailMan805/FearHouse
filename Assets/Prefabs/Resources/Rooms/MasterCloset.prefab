@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tokenCost: 1
+  isStart: 1
 --- !u!1 &919094259632988655
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,6 +729,7 @@ MonoBehaviour:
   east: 1
   west: 0
   newNode: 1
+  isStart: 1
 --- !u!1 &3692525792892599925
 GameObject:
   m_ObjectHideFlags: 0
