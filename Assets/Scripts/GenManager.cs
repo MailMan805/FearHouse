@@ -414,23 +414,23 @@ public class GenManager : MonoBehaviour
             availableNodes = GameObject.FindGameObjectsWithTag("Node");
 
             // cleaner is obsolete
-            //if (tokens == 0)
-            //{
-            //    availableNodes = GameObject.FindGameObjectsWithTag("Node");
-            //    foreach (GameObject node in availableNodes)
-            //    {
-            //        if (!node.GetComponent<NodeData>().isStart)
-            //        {
-            //            Destroy(node);
-            //        }
-                    
-            //    }
-            //    GameObject[] colliders = GameObject.FindGameObjectsWithTag("Bounds");
-            //    foreach (GameObject collider in colliders)
-            //    {
-            //        Destroy(collider);
-            //    }
-            //}
+            if (tokens == 0)
+            {
+                availableNodes = GameObject.FindGameObjectsWithTag("Node");
+                foreach (GameObject node in availableNodes)
+                {
+                    if (!node.GetComponent<NodeData>().isStart)
+                    {
+                        Destroy(node);
+                    }
+
+                }
+                GameObject[] colliders = GameObject.FindGameObjectsWithTag("Bounds");
+                foreach (GameObject collider in colliders)
+                {
+                    Destroy(collider);
+                }
+            }
 
         }
         // reGenerates the map
