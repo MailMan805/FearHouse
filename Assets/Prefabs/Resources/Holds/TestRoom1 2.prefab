@@ -310,7 +310,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -558,6 +558,7 @@ MonoBehaviour:
   east: 0
   west: 1
   newNode: 1
+  isStart: 0
   isUsable: 1
 --- !u!1 &1005857740037725724
 GameObject:
@@ -1374,6 +1375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tokenCost: 3
+  isStart: 0
 --- !u!1 &1916052759524930358
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,6 +2024,7 @@ MonoBehaviour:
   east: 0
   west: 0
   newNode: 1
+  isStart: 0
   isUsable: 1
 --- !u!1 &3557553975426655296
 GameObject:
@@ -2146,6 +2149,7 @@ MonoBehaviour:
   east: 1
   west: 0
   newNode: 1
+  isStart: 0
   isUsable: 1
 --- !u!1 &3932502524734077933
 GameObject:
@@ -3636,6 +3640,7 @@ MonoBehaviour:
   east: 0
   west: 0
   newNode: 1
+  isStart: 0
   isUsable: 1
 --- !u!1 &6487506272369090642
 GameObject:
