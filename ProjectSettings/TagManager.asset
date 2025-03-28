@@ -8,6 +8,11 @@ TagManager:
   - Offset
   - Bounds
   - Root
+  - PGPoint
+  - Sheild
+  - Needle
+  - Pine
+  - Racc
   layers:
   - Default
   - TransparentFX

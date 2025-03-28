@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/Resources/Rooms/TestRoom1 1.prefab.meta
 guid: fe90baf741c0c434d81e1f2393d890b4
+========
+guid: 7a313fa555e2b38419ed365769ca9088
+>>>>>>>> origin/JadenPainter-9/6/2024:Assets/Prefabs/Resources/Holds/TestRoom2 1.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

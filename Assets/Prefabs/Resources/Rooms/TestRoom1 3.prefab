@@ -571,8 +571,13 @@ Transform:
   m_GameObject: {fileID: 1593105466774438479}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
+<<<<<<< HEAD:Assets/Prefabs/Resources/Rooms/TestRoom1 3.prefab
   m_LocalPosition: {x: 4.000071, y: 1.2499999, z: 7.2499456}
   m_LocalScale: {x: 6.9996, y: 3.0000842, z: 0.5}
+=======
+  m_LocalPosition: {x: -2.86, y: 0.25000015, z: 2.75}
+  m_LocalScale: {x: 8.63973, y: 4.9226375, z: 8.940927}
+>>>>>>> origin/JadenPainter-9/6/2024:Assets/Prefabs/Resources/HaydenRooms/TestRoom1 4.prefab
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 449137240451400596}
@@ -591,7 +596,130 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD:Assets/Prefabs/Resources/Rooms/TestRoom1 3.prefab
   m_GameObject: {fileID: 1593105466774438479}
+=======
+  m_GameObject: {fileID: 1537640921868283063}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: c0c950035b7b6964f9ae98e0f24341f2, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6438507131403672225
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537640921868283063}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7904621389425731755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537640921868283063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e2f6d28fc306145847a2c3b3d079a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newCollider: 1
+  rootIndex: 0
+--- !u!1 &1538204641832638290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2588566687604617584}
+  - component: {fileID: 6339100176762400684}
+  - component: {fileID: 1682264896842741288}
+  - component: {fileID: 2710457042236151233}
+  m_Layer: 0
+  m_Name: ClosetWall1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2588566687604617584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538204641832638290}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
+  m_LocalPosition: {x: -0.7499831, y: 1.2499999, z: 3.875015}
+  m_LocalScale: {x: 0.5, y: 3, z: 5.7498507}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7521745101571557427}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &6339100176762400684
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538204641832638290}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1682264896842741288
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538204641832638290}
+>>>>>>> origin/JadenPainter-9/6/2024:Assets/Prefabs/Resources/HaydenRooms/TestRoom1 4.prefab
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -1005,10 +1133,28 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029504295}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
+<<<<<<< HEAD:Assets/Prefabs/Resources/Rooms/TestRoom1 3.prefab
   - {fileID: 2614131506312919182}
+=======
+  - {fileID: 7139186457534659178}
+  - {fileID: 2668844719950328070}
+  - {fileID: 8178789361089114717}
+  - {fileID: 4356176599389133384}
+  - {fileID: 8276064521472849124}
+  - {fileID: 3402484180709295842}
+  - {fileID: 5475910949531614881}
+  - {fileID: 6115762186699335937}
+  - {fileID: 987042503154775245}
+  - {fileID: 2588566687604617584}
+  - {fileID: 7263176325940286081}
+  - {fileID: 5283666717724300327}
+  - {fileID: 955895772363426632}
+  - {fileID: 1049435180053264476}
+  - {fileID: 7713330286209585185}
+>>>>>>> origin/JadenPainter-9/6/2024:Assets/Prefabs/Resources/HaydenRooms/TestRoom1 4.prefab
   - {fileID: 449137240451400596}
   - {fileID: 2073278736302598889}
   m_Father: {fileID: 0}
@@ -2320,13 +2466,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+<<<<<<< HEAD:Assets/Prefabs/Resources/Rooms/TestRoom1 3.prefab
 --- !u!65 &4022313852072105353
 BoxCollider:
+=======
+--- !u!64 &5848114116843986522
+MeshCollider:
+>>>>>>> origin/JadenPainter-9/6/2024:Assets/Prefabs/Resources/HaydenRooms/TestRoom1 4.prefab
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD:Assets/Prefabs/Resources/Rooms/TestRoom1 3.prefab
   m_GameObject: {fileID: 6487506272369090642}
+=======
+  m_GameObject: {fileID: 6482465472864627077}
+>>>>>>> origin/JadenPainter-9/6/2024:Assets/Prefabs/Resources/HaydenRooms/TestRoom1 4.prefab
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2338,10 +2493,18 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
+<<<<<<< HEAD:Assets/Prefabs/Resources/Rooms/TestRoom1 3.prefab
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6961148691057566105
+=======
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &6917496692285862358
+>>>>>>> origin/JadenPainter-9/6/2024:Assets/Prefabs/Resources/HaydenRooms/TestRoom1 4.prefab
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

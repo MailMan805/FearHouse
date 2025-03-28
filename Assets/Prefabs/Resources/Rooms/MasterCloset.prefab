@@ -882,6 +882,7 @@ MonoBehaviour:
   west: 0
   newNode: 1
   isStart: 1
+  isUsable: 1
 --- !u!1 &3692525792892599925
 GameObject:
   m_ObjectHideFlags: 0
