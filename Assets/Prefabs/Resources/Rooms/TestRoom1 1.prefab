@@ -438,8 +438,6 @@ MonoBehaviour:
   east: 0
   west: 1
   newNode: 1
-  isStart: 0
-  isUsable: 1
 --- !u!1 &541089590209306634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,7 +1358,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tokenCost: 5
-  isStart: 0
 --- !u!1 &2081502543526488762
 GameObject:
   m_ObjectHideFlags: 0
@@ -2534,8 +2531,6 @@ MonoBehaviour:
   east: 0
   west: 0
   newNode: 1
-  isStart: 0
-  isUsable: 1
 --- !u!1 &3557553975426655296
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,8 +2654,6 @@ MonoBehaviour:
   east: 1
   west: 0
   newNode: 1
-  isStart: 0
-  isUsable: 1
 --- !u!1 &3817123656042745517
 GameObject:
   m_ObjectHideFlags: 0
@@ -4269,8 +4262,6 @@ MonoBehaviour:
   east: 0
   west: 0
   newNode: 1
-  isStart: 0
-  isUsable: 1
 --- !u!1 &6447641604217372464
 GameObject:
   m_ObjectHideFlags: 0
