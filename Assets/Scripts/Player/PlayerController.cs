@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-
+        
         // Find the child camera associated with this player
         playerCamera = GetComponentInChildren<Camera>();
         if (playerCamera == null)

@@ -30,10 +30,10 @@ public class AgentRaccControls : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            AudioManager.instance.PlaySound("shotgun");
             Shoot(0,12);
             Shoot(5,8);
             Shoot(-5,8);
-            GetComponent<AudioSource>().Play();
         }
     }
 }

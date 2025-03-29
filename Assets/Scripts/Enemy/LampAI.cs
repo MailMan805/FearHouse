@@ -93,6 +93,8 @@ public class LampAI : MonoBehaviour
 
     private System.Collections.IEnumerator Explode()
     {
+        AudioManager.instance.PlayMusic("punk_song"); // remove this line of code at some point
+
         isExploding = true;
         yield return new WaitForSeconds(explosionDelay);
 
