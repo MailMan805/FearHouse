@@ -24,6 +24,8 @@ public class GenManager : MonoBehaviour
     // Start is called before the first frame update
     private bool isGenerating = false;
 
+    private int roundTokens;
+
     public GameObject EastWestWallPrefab;
     public GameObject NorthSouthWallPrefab;
 
@@ -169,7 +171,7 @@ public class GenManager : MonoBehaviour
             Destroy(genRoom);
         }
 
-        yield return new WaitForSeconds(.1f); // Small delay to ensure smooth execution
+        yield return new WaitForSeconds(.001f); // Small delay to ensure smooth execution
         isGenerating = false; // Unlock generation
     }
 
@@ -201,47 +203,22 @@ public class GenManager : MonoBehaviour
         }
 
     }
-
-    // Update is called once per frame
-    void FixedUpdate()
+    public void reGenerate()
     {
-
-        if (tokens > 0 && !isGenerating)
+        GameObject[] allRooms = GameObject.FindGameObjectsWithTag("Root");
+        foreach (GameObject room in allRooms)
         {
-            Debug.Log("Assigned new availableNodes array");
-            availableNodes = GameObject.FindGameObjectsWithTag("Node");
-
-            // double checks overlaping nodes
-            StartCoroutine(GenerateRooms()); // Call coroutine instead of direct function
-
-            // cleaner is obsolete
-            if (tokens == 0)
+            if (!room.GetComponent<RoomData>().isStart)
             {
-                availableNodes = GameObject.FindGameObjectsWithTag("Node");
-                foreach (GameObject node in availableNodes)
-                {
-                    if(node.GetComponent<NodeData>().south || node.GetComponent<NodeData>().north)
-                    {
-                        Instantiate(NorthSouthWallPrefab, node.transform.position, NorthSouthWallPrefab.transform.rotation);
-                    }
-                    else if (node.GetComponent<NodeData>().east || node.GetComponent<NodeData>().west)
-                    {
-                        Instantiate(EastWestWallPrefab, node.transform.position, EastWestWallPrefab.transform.rotation);
-                    }
-                    Destroy(node);
-                }
-                GameObject[] colliders = GameObject.FindGameObjectsWithTag("Bounds");
-                foreach (GameObject collider in colliders)
-                {
-                    Destroy(collider);
-                }
+                Destroy(room);
             }
         }
 
-
-
-        // if round end : deleteRooms();
+        tokens = roundTokens + 10;
+        roundTokens = tokens;
     }
+    // Update is called once per frame
+    
     IEnumerator DelayedOverlapCheck(GameObject genRoom, List<GameObject> newColliders, GameObject node, GameObject otherNode)
     {
         //yield return new WaitForFixedUpdate(); // Wait for physics update
@@ -250,8 +227,7 @@ public class GenManager : MonoBehaviour
 
         foreach (GameObject collider in newColliders)
         {
-            Collider[] overlapDetector = Physics.OverlapBox(collider.transform.position, collider.transform.localScale / 1.899f, Quaternion.identity, Overlap);
-            Debug.Log(collider.transform.localScale / 1.9f);
+            Collider[] overlapDetector = Physics.OverlapBox(collider.transform.position, collider.transform.localScale / 2f, Quaternion.identity, Overlap);
             if (overlapDetector.Length > 0 || !node.GetComponent<NodeData>().isUsable || !otherNode.GetComponent<NodeData>().isUsable)
             {
                 colliding = true;
@@ -280,13 +256,66 @@ public class GenManager : MonoBehaviour
                         if (availableNodes[i] != null && availableNodes[j] != null && availableNodes[i].transform.position == availableNodes[j].transform.position)
                         {
                             Debug.Log("Destroyed used Nodes");
-                            Destroy(availableNodes[i]);
-                            Destroy(availableNodes[j]);
+                            if (!availableNodes[i].GetComponent<NodeData>().isStart)
+                            {
+                                Destroy(availableNodes[i]);
+                            }
+                            if (!availableNodes[j].GetComponent<NodeData>().isStart)
+                            {
+                                Destroy(availableNodes[j]);
+                            }
                         }
                     }
                 }
             }
         }
         yield return null;
+    }
+
+    void FixedUpdate()
+    {
+
+        if (tokens > 0 && !isGenerating)
+        {
+            availableNodes = GameObject.FindGameObjectsWithTag("Node");
+
+            // double checks overlaping nodes
+            StartCoroutine(GenerateRooms()); // Call coroutine instead of direct function
+
+            // cleaner is obsolete
+            if (tokens == 0)
+            {
+                availableNodes = GameObject.FindGameObjectsWithTag("Node");
+                foreach (GameObject node in availableNodes)
+                {
+                    if ((node.GetComponent<NodeData>().south || node.GetComponent<NodeData>().north) && !node.GetComponent<NodeData>().isStart)
+                    {
+                        Instantiate(NorthSouthWallPrefab, node.transform.position, NorthSouthWallPrefab.transform.rotation);
+                    }
+                    else if ((node.GetComponent<NodeData>().east || node.GetComponent<NodeData>().west) && !node.GetComponent<NodeData>().isStart)
+                    {
+                        Instantiate(EastWestWallPrefab, node.transform.position, EastWestWallPrefab.transform.rotation);
+                    }
+                    if (!node.GetComponent<NodeData>().isStart)
+                    {
+                        Destroy(node);
+                    }
+                }
+                GameObject[] colliders = GameObject.FindGameObjectsWithTag("Bounds");
+                foreach (GameObject collider in colliders)
+                {
+                    Destroy(collider);
+                }
+            }
+        }
+        // reGenerates the map
+        if (Input.GetKey(KeyCode.E) && tokens == 0)
+        {
+            reGenerate();
+        }
+
+
+
+        // if round end : deleteRooms();
     }
 }
