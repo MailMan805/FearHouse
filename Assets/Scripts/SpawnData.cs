@@ -23,7 +23,7 @@ public class SpawnData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnList = new bool[] {chair, couch, oven, lamp, rug, tv };
+        spawnList = new bool[] {chair, couch, oven, lamp, rug, tv};
 
     }
 

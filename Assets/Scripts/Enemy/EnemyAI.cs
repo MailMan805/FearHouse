@@ -4,6 +4,12 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    [Header("Enemy Params")]
+    public string name; //Enemy name
+    public float cooldown; //Spawn node reactivation timer
+    public int spawnCost; //Number of spawnTokens used when spawning
+
+
     [Header("Enemy Stats")]
     public float health = 100f;
     public float speed = 3.5f;
