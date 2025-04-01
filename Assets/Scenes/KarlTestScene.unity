@@ -305,6 +305,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -3.65
       objectReference: {fileID: 0}
+    - target: {fileID: 6905937799774249905, guid: fd67622ea7f6dbf428421b917665f8f4, type: 3}
+      propertyPath: enemyCap
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905937799774249905, guid: fd67622ea7f6dbf428421b917665f8f4, type: 3}
+      propertyPath: spawnRateOfChange
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905937799774249905, guid: fd67622ea7f6dbf428421b917665f8f4, type: 3}
+      propertyPath: spawnTokensRateOfChange
+      value: 1.05
+      objectReference: {fileID: 0}
     - target: {fileID: 7614242314940455783, guid: fd67622ea7f6dbf428421b917665f8f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.667747

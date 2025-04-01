@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     public Camera player2Camera; // Assign the camera here
     public Transform[] spawnPoints; // Set up spawn points in the scene
 
-    // skill points
     public int RaccFearPoints = 0;
     public int PineFearPoints = 0;
 
@@ -18,13 +17,9 @@ public class GameManager : MonoBehaviour
     public float roundTime = 60f; //How long each round is in seconds
     public bool isPaused = false; //Pauses the timer when players are in closet
 
-    public float spawnRateOfChange; //Percent reduction from spawnNode spawn timers
-    public int spawnTokens; //Number of tokens for each round that enemies spend to spawn
-    public float spawnTokensRateOfChange; //Percent increase for enemy spawn tokens per round
-
     public int RoundCounter = 0; //Tracks which round the game is on.
 
-    // in seconds
+
     public float RevivalTime = 5f;
 
     void Awake()

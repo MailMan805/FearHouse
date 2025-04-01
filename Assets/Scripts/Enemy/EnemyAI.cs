@@ -4,12 +4,6 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    [Header("Enemy Params")]
-    public string name; //Enemy name
-    public float cooldown; //Spawn node reactivation timer
-    public int spawnCost; //Number of spawnTokens used when spawning
-
-
     [Header("Enemy Stats")]
     public float health = 100f;
     public float speed = 3.5f;
@@ -34,7 +28,10 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        if (Pine == null || Racc == null) return;
+        if (Pine == null || Racc == null)
+        {
+            return;
+        }
 
         float distanceToPlayer1 = Vector3.Distance(transform.position, Pine.position);
         float distanceToPlayer2 = Vector3.Distance(transform.position, Racc.position);
@@ -57,13 +54,12 @@ public class EnemyAI : MonoBehaviour
 
     private IEnumerator AttackPlayer(GameObject playerObject)
     {
-        canAttack = false;
-        // Assume player has a script with a TakeDamage method
-        PlayerHealth playerHealth = playerObject.GetComponent<PlayerHealth>();
-        if (playerHealth != null)
+        BasePlayer basePlayer = playerObject.GetComponent<BasePlayer>();
+        if (basePlayer != null)
         {
-            playerHealth.TakeDamage(attackDamage);
+            basePlayer.Hurt(attackDamage);
         }
+        canAttack = false;
         yield return new WaitForSeconds(attackDelay);
         canAttack = true;
     }

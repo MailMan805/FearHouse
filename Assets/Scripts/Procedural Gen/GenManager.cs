@@ -32,6 +32,7 @@ public class GenManager : MonoBehaviour
 
     void Start()
     {
+        roundTokens = tokens; // sets roundTokens the value of tokens for memory in reGeneration()
         // targets the Overlap LayerMask for overlap detection
         rooms = Resources.LoadAll<GameObject>("Rooms");
         GameObject genRoom = Instantiate(rooms[0]) as GameObject;

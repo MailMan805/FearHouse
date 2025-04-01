@@ -15,6 +15,7 @@ public class SpawnData : MonoBehaviour
     public bool oven = false;
     public bool lamp = false;
     public bool rug = false;
+    public bool teakettle = false;
     public bool tv = false;
     //public bool hand = false;
 
@@ -23,7 +24,7 @@ public class SpawnData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnList = new bool[] {chair, couch, oven, lamp, rug, tv};
+        spawnList = new bool[] {chair, couch, oven, lamp, rug, teakettle, tv};
 
     }
 

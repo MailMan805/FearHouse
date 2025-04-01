@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 1203922304005282373}
   - component: {fileID: 8585037931923258231}
   m_Layer: 0
-  m_Name: MasterCloset
+  m_Name: 0MasterCloset
   m_TagString: Root
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
