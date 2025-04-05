@@ -7,6 +7,9 @@ using UnityEngine.InputSystem;
 
 public class Lobby : MonoBehaviour
 {
+    public GameObject PlayerA, PlayerB;
+    public GameObject playerPrefabB;
+
     PlayerInputManager inputManager;
     [SerializeField] public Material[] materials;
     private void Awake()
@@ -17,6 +20,16 @@ public class Lobby : MonoBehaviour
     [SerializeField]
     public void OnPlayerJoined(PlayerInput input)
     {
+        if (PlayerA == null)
+        {
+            PlayerA = input.gameObject;
+            inputManager.playerPrefab = playerPrefabB;
+        }
+        else
+        {
+            PlayerB = input.gameObject;
+        }
+
         var id = inputManager.playerCount - 1;
         var player = input.gameObject;
         player.transform.position = new(id, 1, 0);

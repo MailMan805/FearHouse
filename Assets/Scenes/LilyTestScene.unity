@@ -423,6 +423,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78742efa73d78be49aafcb8015ef481f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerA: {fileID: 0}
+  PlayerB: {fileID: 0}
+  playerPrefabB: {fileID: 7093553485270074356, guid: a56d9a321c93e82449c587d4f4af78ff, type: 3}
   materials: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
