@@ -31,10 +31,20 @@ public class GameManager : MonoBehaviour
     {
         // Spawn Player 1
         GameObject player1 = Instantiate(player1Prefab, spawnPoints[0].position, Quaternion.identity);
-        player1.GetComponent<PlayerController>().playerNumber = 1; // Assign Player 1 number
+        //player1.GetComponent<PlayerController>().playerNumber = 1; // Assign Player 1 number
 
         // Spawn Player 2
         GameObject player2 = Instantiate(player2Prefab, spawnPoints[1].position, Quaternion.identity);
-        player2.GetComponent<PlayerController>().playerNumber = 2; // Assign Player 2 number
+        //player2.GetComponent<PlayerController>().playerNumber = 2; // Assign Player 2 number
+
+        //if (player1.GetComponent<PlayerController>().playerNumber == 1)
+        //{
+        //    Debug.Log("Player 1 has been assigned!");
+        //}
+
+        //if (player2.GetComponent<PlayerController>().playerNumber == 2)
+        //{
+        //    Debug.Log("Player 2 has been assigned!");
+        //}
     }
 }

@@ -32,6 +32,9 @@ public class AgentPineControls : MonoBehaviour
     private Quaternion shieldInitialRotation;  // Initial rotation of the shield
     private Vector3 shieldInitialPosition;     // Initial position of the shield
 
+    // Movement variables
+    public float moveSpeed = 5f;
+    public float cameraRotationSpeed = 5f; // Speed at which the camera rotates
     void Start()
     {
         // Store the initial position and rotation of the sword
@@ -59,6 +62,23 @@ public class AgentPineControls : MonoBehaviour
 
     void Update()
     {
+        // Movement script per controller 2 (Lillian)
+        // Determine the input axes based on player number
+       
+
+        float moveX = Input.GetAxis("HorizontalP2");
+        float moveZ = Input.GetAxis("VerticalP2");
+
+        // Calculate movement direction
+        Vector3 move = new Vector3(0, 0, moveZ) * moveSpeed * Time.deltaTime;
+        transform.Translate(move);
+
+        // Rotate the camera based on horizontal movement
+        if (moveX != 0)
+        {
+            RotateCamera(moveX);
+        }
+
         // Start swinging the sword when "E" is pressed
         if (Input.GetKeyDown(KeyCode.E) && !isSwordSwinging && !isShieldUp)
         {
@@ -77,6 +97,14 @@ public class AgentPineControls : MonoBehaviour
         {
             StartCoroutine(ResetShield());
         }
+    }
+
+    void RotateCamera(float moveX)
+    {
+        float rotationAngle = moveX > 0 ? 40 * cameraRotationSpeed * Time.deltaTime : -40 * cameraRotationSpeed * Time.deltaTime; // Adjust as needed
+
+        // Increment the current rotation
+        transform.rotation *= Quaternion.Euler(0, rotationAngle, 0);
     }
 
     IEnumerator SwingSword()
