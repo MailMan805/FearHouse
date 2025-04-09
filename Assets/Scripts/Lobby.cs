@@ -11,17 +11,17 @@ public class Lobby : MonoBehaviour
     public GameObject playerPrefabB;
 
     PlayerInputManager inputManager;
-    [SerializeField] public Material[] materials;
+
     private void Awake()
     {
         inputManager = GetComponent<PlayerInputManager>();
     }
-
-    [SerializeField]
     public void OnPlayerJoined(PlayerInput input)
     {
+        // If player1 doesn't exist...
         if (PlayerA == null)
         {
+            // attach input to respective players
             PlayerA = input.gameObject;
             inputManager.playerPrefab = playerPrefabB;
         }
@@ -33,6 +33,6 @@ public class Lobby : MonoBehaviour
         var id = inputManager.playerCount - 1;
         var player = input.gameObject;
         player.transform.position = new(id, 1, 0);
-        player.GetComponent<PlayerController>().SetUp(id, materials[id]);
+        player.GetComponent<PlayerController>().SetUp(id);
     }
 }

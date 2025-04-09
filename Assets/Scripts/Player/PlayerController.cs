@@ -2,27 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    public TMP_Text idLabel;
     int id;
     Vector3 moveInput;
     float speed = 4.0f;
 
-    public void SetUp(int id, Material material)
+    // Camera rotation variables
+    public float lookSpeedX = 2.0f, lookSpeedY = 2.0f;
+    public float minLookY = -80f, maxLookY = 80f;
+    private Vector2 currentRotation;
+    // Deadzone variable
+    public float joystickDeadZone = 0.3f;
+
+    public void SetUp(int id)
     {
         this.id = id;
-        idLabel.text = "Player_" + id;
-        GetComponent<MeshRenderer>().material = material;
     }
 
+    // WASD and Left Joystick movement
     public void OnMove(InputAction.CallbackContext context)
     {
         var v = context.ReadValue<Vector2>();
         moveInput.x = v.x;
         moveInput.z = v.y;
+    }
+
+    // Mouse and Right Joystick camera
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        var v = context.ReadValue<Vector2>();
+
+        // Deadzone. This doesn't fix the joystick stuttering, but its good to have anyways.
+        if (v.magnitude > joystickDeadZone)
+        {
+            currentRotation.x += v.x * lookSpeedX; // horizontal input
+            currentRotation.y -= v.y * lookSpeedY; // vertical input
+        }
+
+        currentRotation.y = Mathf.Clamp(currentRotation.y, minLookY, maxLookY); // prevents camera flipping
+        transform.rotation = Quaternion.Euler(currentRotation.y, currentRotation.x, 0); // scary math term that makes cameras spin for some reason
     }
 
     void Update()
