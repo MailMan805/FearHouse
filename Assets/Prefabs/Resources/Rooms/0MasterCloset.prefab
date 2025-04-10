@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 5644141927891897361}
   - component: {fileID: 2974986830776382704}
   - component: {fileID: 5041553060654002023}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ClosetDoor4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -665,7 +665,7 @@ GameObject:
   - component: {fileID: 7575535928903482238}
   - component: {fileID: 4440696788495706331}
   - component: {fileID: 7920234996867649228}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ClosetDoor8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -771,7 +771,7 @@ GameObject:
   - component: {fileID: 2653864745584404425}
   - component: {fileID: 4721177123798585250}
   - component: {fileID: 5176932339999330003}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: East
   m_TagString: Node
   m_Icon: {fileID: 0}
@@ -1000,7 +1000,7 @@ GameObject:
   - component: {fileID: 3977440790451017020}
   - component: {fileID: 7093090963445380540}
   - component: {fileID: 2417114361963655948}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ClosetFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1105,7 +1105,7 @@ GameObject:
   - component: {fileID: 9054735747714520297}
   - component: {fileID: 7186913922197253956}
   - component: {fileID: 6441194659228927731}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ClosetRoof
   m_TagString: Untagged
   m_Icon: {fileID: 0}

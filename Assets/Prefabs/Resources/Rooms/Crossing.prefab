@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 4823599673687499896}
   - component: {fileID: 6634888596180766869}
   - component: {fileID: 8682012970995827044}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: West
   m_TagString: Node
   m_Icon: {fileID: 0}
@@ -923,7 +923,7 @@ GameObject:
   - component: {fileID: 7272960742320552057}
   - component: {fileID: 8658272642745601602}
   - component: {fileID: 5066619149129737350}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TestRoomCeiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1496,7 +1496,7 @@ GameObject:
   - component: {fileID: 8235300923321051480}
   - component: {fileID: 976902766833614317}
   - component: {fileID: 4761541892304429484}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TestRoomCeiling (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2127,7 +2127,7 @@ GameObject:
   - component: {fileID: 8830376790582890351}
   - component: {fileID: 1744855098563132879}
   - component: {fileID: 732521106399228237}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: South
   m_TagString: Node
   m_Icon: {fileID: 0}
@@ -2390,7 +2390,7 @@ GameObject:
   - component: {fileID: 5797684200209998565}
   - component: {fileID: 2423503302431374832}
   - component: {fileID: 3600920709125454046}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TestRoomCeiling (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

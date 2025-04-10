@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 4823599673687499896}
   - component: {fileID: 6634888596180766869}
   - component: {fileID: 8682012970995827044}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: West
   m_TagString: Node
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   - component: {fileID: 4362976452385388302}
   - component: {fileID: 639630048376007471}
   - component: {fileID: 176305195874480291}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TestRoomFloor (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1321,7 +1321,7 @@ GameObject:
   - component: {fileID: 7521745101571557427}
   - component: {fileID: 7227982287985367992}
   m_Layer: 0
-  m_Name: TestRoom2.1 1
+  m_Name: TheCroissant
   m_TagString: Root
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1371,7 +1371,7 @@ GameObject:
   - component: {fileID: 2550613892291130005}
   - component: {fileID: 8502941466431881377}
   - component: {fileID: 1961371416504720833}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TestRoomFloor (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1686,7 +1686,7 @@ GameObject:
   - component: {fileID: 4599099780201313151}
   - component: {fileID: 8707528082046608489}
   - component: {fileID: 6886487164892300561}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TestRoomFloor (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1792,7 +1792,7 @@ GameObject:
   - component: {fileID: 4085931068387112640}
   - component: {fileID: 4714572186571544486}
   - component: {fileID: 8875976029732586262}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: North
   m_TagString: Node
   m_Icon: {fileID: 0}
@@ -2037,7 +2037,7 @@ GameObject:
   - component: {fileID: 6042246345144160657}
   - component: {fileID: 5299672203372704076}
   - component: {fileID: 9016237291960438087}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: East
   m_TagString: Node
   m_Icon: {fileID: 0}
@@ -2932,7 +2932,7 @@ GameObject:
   - component: {fileID: 1752323800216805064}
   - component: {fileID: 663517807288423880}
   - component: {fileID: 8156005289510100829}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: South
   m_TagString: Node
   m_Icon: {fileID: 0}
@@ -3056,7 +3056,7 @@ GameObject:
   - component: {fileID: 2099999081582328133}
   - component: {fileID: 2044850242514417085}
   - component: {fileID: 1980808887290231627}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TestRoomFloor (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3161,7 +3161,7 @@ GameObject:
   - component: {fileID: 7042356362026186574}
   - component: {fileID: 5026404638942360838}
   - component: {fileID: 7153848033475197891}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TestRoomFloor (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3406,7 +3406,7 @@ GameObject:
   - component: {fileID: 3446019971450044547}
   - component: {fileID: 4523622160862599110}
   - component: {fileID: 7377821054699501567}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TestRoomFloor (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3721,7 +3721,7 @@ GameObject:
   - component: {fileID: 4821685029564436788}
   - component: {fileID: 4414727189040510064}
   - component: {fileID: 7636757089331954278}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TestRoomFloor (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
