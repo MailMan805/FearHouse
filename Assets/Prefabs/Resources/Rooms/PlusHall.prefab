@@ -976,7 +976,7 @@ GameObject:
   - component: {fileID: 7521745101571557427}
   - component: {fileID: 7227982287985367992}
   m_Layer: 0
-  m_Name: TestRoom1 5
+  m_Name: PlusHall
   m_TagString: Root
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
