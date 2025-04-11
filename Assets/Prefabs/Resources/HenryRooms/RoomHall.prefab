@@ -1041,7 +1041,7 @@ GameObject:
   - component: {fileID: 4922750208573040523}
   - component: {fileID: 755270488770616451}
   - component: {fileID: 4928752663555145943}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TestRoomFloor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1482,7 +1482,7 @@ GameObject:
   - component: {fileID: 6042246345144160657}
   - component: {fileID: 5299672203372704076}
   - component: {fileID: 9016237291960438087}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: East
   m_TagString: Node
   m_Icon: {fileID: 0}
@@ -2864,7 +2864,7 @@ GameObject:
   - component: {fileID: 8407844216265640810}
   - component: {fileID: 6717826339036929800}
   - component: {fileID: 8678007005971886168}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TestRoomFloor (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
