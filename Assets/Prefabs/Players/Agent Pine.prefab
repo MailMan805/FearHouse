@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 3839547073156475920}
   - component: {fileID: 4423197706714053812}
   - component: {fileID: 6854477819696154927}
+  - component: {fileID: 4610204177025031326}
   - component: {fileID: 6700603213161615064}
-  - component: {fileID: 5050644575675673658}
+  - component: {fileID: 8221728732151138196}
   m_Layer: 0
   m_Name: Agent Pine
   m_TagString: Pine
@@ -111,7 +112,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3839547073156475920
 Rigidbody:
@@ -180,6 +181,19 @@ MonoBehaviour:
   shieldSwingAngleZ: 0
   shieldSwingSpeed: 7
   shieldSwingOffset: {x: 0.5, y: 0.1, z: 0}
+--- !u!114 &4610204177025031326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3297392955621445126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c72fffb44c9a3124d9d5ca5e0e318210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!65 &6700603213161615064
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -199,9 +213,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.2, y: 1.2, z: 1.2}
+  m_Size: {x: 1, y: 0.8, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5050644575675673658
+--- !u!114 &8221728732151138196
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -210,11 +224,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3297392955621445126}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce89d92f17a251647ae8ec9dce97235b, type: 3}
+  m_Script: {fileID: 11500000, guid: a9dd36fd7193b3f4fbbe29b727200f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  attackDamage: 0
 --- !u!1 &7484415164662683771
 GameObject:
   m_ObjectHideFlags: 0
