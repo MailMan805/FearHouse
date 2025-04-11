@@ -123,6 +123,69 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &335488514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 335488516}
+  - component: {fileID: 335488515}
+  m_Layer: 0
+  m_Name: NavMesh Surface
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &335488515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335488514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 23
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 1
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.1
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
+--- !u!4 &335488516
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335488514}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &775434264
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,6 +236,7 @@ MonoBehaviour:
   Overlap:
     serializedVersion: 2
     m_Bits: 9
+  navSurface: {fileID: 335488515}
   EastWestWallPrefab: {fileID: 7757495406567602793, guid: 89fc81bcbb9f39145b3b13fdd0d55726, type: 3}
   NorthSouthWallPrefab: {fileID: 5045895782564633166, guid: 217c3ba9bb7a0d344ad20e0e8afb9896, type: 3}
 --- !u!1 &1430131726
@@ -304,6 +368,18 @@ PrefabInstance:
     - target: {fileID: 5352436368281944645, guid: fd67622ea7f6dbf428421b917665f8f4, type: 3}
       propertyPath: m_LocalPosition.z
       value: -3.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905937799774249905, guid: fd67622ea7f6dbf428421b917665f8f4, type: 3}
+      propertyPath: enemyCap
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905937799774249905, guid: fd67622ea7f6dbf428421b917665f8f4, type: 3}
+      propertyPath: spawnRateOfChange
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905937799774249905, guid: fd67622ea7f6dbf428421b917665f8f4, type: 3}
+      propertyPath: spawnTokensRateOfChange
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 7614242314940455783, guid: fd67622ea7f6dbf428421b917665f8f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -468,3 +544,4 @@ SceneRoots:
   - {fileID: 775434265}
   - {fileID: 2030691632}
   - {fileID: 1731952104}
+  - {fileID: 335488516}
