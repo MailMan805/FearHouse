@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5159033201946957640}
   - component: {fileID: 5010199759664470451}
   - component: {fileID: 6557535077371258843}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: EastWestWall
   m_TagString: Root
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        
+
         // Find the child camera associated with this player
         playerCamera = GetComponentInChildren<Camera>();
         if (playerCamera == null)
@@ -22,12 +22,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        //HIGHLY EXPERIMENTAL
-        BasePlayer basePlayer = GetComponentInChildren<BasePlayer>();
-        if (basePlayer != null && basePlayer.IsDown())
-        {
-            return;
-        }
         // Determine the input axes based on player number
         string horizontalAxis = playerNumber == 1 ? "Horizontal" : "HorizontalP2";
         string verticalAxis = playerNumber == 1 ? "Vertical" : "VerticalP2";

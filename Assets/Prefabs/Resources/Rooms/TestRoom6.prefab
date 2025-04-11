@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 170707236334899582}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.728, y: 2.25, z: 4.7499943}
+  m_LocalPosition: {x: -2.7319722, y: 2.25, z: 4.7499943}
   m_LocalScale: {x: 1, y: 2, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 4823599673687499896}
   - component: {fileID: 6634888596180766869}
   - component: {fileID: 8682012970995827044}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: West
   m_TagString: Node
   m_Icon: {fileID: 0}
@@ -334,7 +334,6 @@ MonoBehaviour:
   west: 1
   newNode: 1
   isStart: 0
-  isUsable: 1
 --- !u!1 &823551954424900754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,7 +1146,7 @@ GameObject:
   - component: {fileID: 4085931068387112640}
   - component: {fileID: 4714572186571544486}
   - component: {fileID: 8875976029732586262}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: North
   m_TagString: Node
   m_Icon: {fileID: 0}
@@ -1258,7 +1257,6 @@ MonoBehaviour:
   west: 0
   newNode: 1
   isStart: 0
-  isUsable: 1
 --- !u!1 &3557553975426655296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,7 +1270,7 @@ GameObject:
   - component: {fileID: 6042246345144160657}
   - component: {fileID: 5299672203372704076}
   - component: {fileID: 9016237291960438087}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: East
   m_TagString: Node
   m_Icon: {fileID: 0}
@@ -1383,7 +1381,6 @@ MonoBehaviour:
   west: 0
   newNode: 1
   isStart: 0
-  isUsable: 1
 --- !u!1 &3614488430058852085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1622,7 +1619,7 @@ Transform:
   m_GameObject: {fileID: 3790460443450155887}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.728, y: 3, z: 4.75}
+  m_LocalPosition: {x: -3.7319722, y: 3, z: 4.75}
   m_LocalScale: {x: 1, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3427,7 +3424,7 @@ GameObject:
   - component: {fileID: 1752323800216805064}
   - component: {fileID: 663517807288423880}
   - component: {fileID: 8156005289510100829}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: South
   m_TagString: Node
   m_Icon: {fileID: 0}
@@ -3538,7 +3535,6 @@ MonoBehaviour:
   west: 0
   newNode: 1
   isStart: 0
-  isUsable: 1
 --- !u!1 &6996437386293423962
 GameObject:
   m_ObjectHideFlags: 0

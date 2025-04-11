@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Unity.AI.Navigation;
-//using UnityEngine.AI;
 
 public class GenManager : MonoBehaviour
 {
@@ -24,9 +22,7 @@ public class GenManager : MonoBehaviour
     Vector3 spawn = new Vector3(0, 1, 0);
     GameObject[] genColliders;
     // Start is called before the first frame update
-    private bool isGenerating = false; // Used for the IEnumerator
-    // the navMesh passed in from hierarchy
-    public NavMeshSurface navSurface;
+    private bool isGenerating = false;
 
     private int roundTokens;
 
@@ -36,7 +32,6 @@ public class GenManager : MonoBehaviour
 
     void Start()
     {
-        roundTokens = tokens; // sets roundTokens the value of tokens for memory in reGeneration()
         // targets the Overlap LayerMask for overlap detection
         rooms = Resources.LoadAll<GameObject>("Rooms");
         GameObject genRoom = Instantiate(rooms[0]) as GameObject;
@@ -311,7 +306,6 @@ public class GenManager : MonoBehaviour
                 {
                     Destroy(collider);
                 }
-                navSurface.BuildNavMesh();
             }
         }
         // reGenerates the map
@@ -319,11 +313,7 @@ public class GenManager : MonoBehaviour
         {
             reGenerate();
         }
-        //if (Input.GetKey(KeyCode.Q) && tokens == 0)
-        //{
-        //    navSurface.BuildNavMesh();
-        //}
-        
+
 
 
         // if round end : deleteRooms();

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5511546214358229109}
   - component: {fileID: 4831431127760520352}
   - component: {fileID: 3267485301055482634}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: NorthSouthWall
   m_TagString: Root
   m_Icon: {fileID: 0}

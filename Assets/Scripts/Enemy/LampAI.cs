@@ -52,7 +52,6 @@ public class LampAI : MonoBehaviour
 
         if (playerInRange && !hasJumped && distanceToTarget <= detectionRange)
         {
-            GetComponent<AudioSource>().Play();
             StartCoroutine(PerformJumpSequence(target));
         }
     }
@@ -89,12 +88,15 @@ public class LampAI : MonoBehaviour
         {
             StartCoroutine(Explode());
         }
+        PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+        if (playerHealth != null)
+        {
+            playerHealth.TakeDamage(explosionDamage);
+        }
     }
 
     private System.Collections.IEnumerator Explode()
     {
-        AudioManager.instance.PlayMusic("punk_song"); // remove this line of code at some point
-
         isExploding = true;
         yield return new WaitForSeconds(explosionDelay);
 
