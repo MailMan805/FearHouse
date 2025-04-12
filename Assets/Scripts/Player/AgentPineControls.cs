@@ -62,20 +62,41 @@ public class AgentPineControls : MonoBehaviour
 
     void Update()
     { 
-
+        /*
         // Start swinging the sword when "E" is pressed
-        if (Input.GetKeyDown(KeyCode.E) && !isSwordSwinging && !isShieldUp)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !isSwordSwinging && !isShieldUp)
         {
             StartCoroutine(SwingSword());
         }
+        */
 
-        // Hold the shield up when "Q" is held down
+        /*// Hold the shield up when "Q" is held down
         if (Input.GetKey(KeyCode.Q))
         {
             if (!isShieldUp)
             {
                 StartCoroutine(HoldShieldUp());
             }
+        }
+        else if (isShieldUp) // Reset shield when Q is released
+        {
+            StartCoroutine(ResetShield());
+        }*/
+    }
+
+    public void TriggerSwordSwing()
+    {
+        if (!isSwordSwinging && !isShieldUp)
+        {
+            StartCoroutine(SwingSword());
+        }
+    }
+
+    public void ShieldBlock()
+    {
+        if (!isShieldUp)
+        {
+            StartCoroutine(HoldShieldUp());
         }
         else if (isShieldUp) // Reset shield when Q is released
         {
@@ -155,6 +176,7 @@ public class AgentPineControls : MonoBehaviour
             shield.transform.localPosition = Vector3.Lerp(shield.transform.localPosition, shieldInitialPosition, timeElapsed);
             yield return null;
         }
+
     }
 
     // Method to check if the sword can hit something

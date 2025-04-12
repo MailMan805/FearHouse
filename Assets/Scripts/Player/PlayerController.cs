@@ -13,8 +13,17 @@ public class PlayerController : MonoBehaviour
     public float lookSpeedX = 2.0f, lookSpeedY = 2.0f;
     public float minLookY = -80f, maxLookY = 80f;
     private Vector2 currentRotation;
+
     // Deadzone variable
     public float joystickDeadZone = 0.3f;
+
+    // Store look input persistently
+    private Vector2 lookInput;
+
+    public void Start()
+    {
+      
+    }
 
     public void SetUp(int id)
     {
@@ -29,25 +38,36 @@ public class PlayerController : MonoBehaviour
         moveInput.z = v.y;
     }
 
-    // Mouse and Right Joystick camera
+    // Store mouse/joystick camera input
     public void OnLook(InputAction.CallbackContext context)
     {
-        var v = context.ReadValue<Vector2>();
+        lookInput = context.ReadValue<Vector2>();
+    }
 
-        // Deadzone. This doesn't fix the joystick stuttering, but its good to have anyways.
-        if (v.magnitude > joystickDeadZone)
-        {
-            currentRotation.x += v.x * lookSpeedX; // horizontal input
-            currentRotation.y -= v.y * lookSpeedY; // vertical input
-        }
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        // Functions from AgentPineControls and AgentRaccControls are passed through this in the the inspector view. The revolution will be streamed on Facebook Live on 6/7/2026.
+    }
 
-        currentRotation.y = Mathf.Clamp(currentRotation.y, minLookY, maxLookY); // prevents camera flipping
-        transform.rotation = Quaternion.Euler(currentRotation.y, currentRotation.x, 0); // scary math term that makes cameras spin for some reason
+    public void OnBlock()
+    {
+        // Function for left trigger on controller, and right click on mouse
     }
 
     void Update()
     {
+        // Movement
         transform.Translate(speed * Time.deltaTime * moveInput);
+
+        // Apply look input every frame
+        if (lookInput.magnitude > joystickDeadZone)
+        {
+            currentRotation.x += lookInput.x * lookSpeedX;
+            currentRotation.y -= lookInput.y * lookSpeedY;
+        }
+
+        currentRotation.y = Mathf.Clamp(currentRotation.y, minLookY, maxLookY);
+        transform.rotation = Quaternion.Euler(currentRotation.y, currentRotation.x, 0);
     }
 
 

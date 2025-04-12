@@ -58,7 +58,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3297392955621445126}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -153,10 +153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ab13be94322334089b477ea951767b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookSpeedX: 2
-  lookSpeedY: 2
-  minLookY: -80
-  maxLookY: 80
+  lookSpeedX: 0.2
+  lookSpeedY: 0.2
+  minLookY: -40
+  maxLookY: 40
   joystickDeadZone: 0.1
 --- !u!114 &6854477819696154927
 MonoBehaviour:
@@ -277,7 +277,19 @@ MonoBehaviour:
     m_ActionId: 7dc9997e-9481-4b8d-a0b0-a37a11c6b5f4
     m_ActionName: Player/Look[/XInputControllerWindows/rightStick,/XInputControllerWindows1/rightStick,/Mouse/delta,/Pen/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6854477819696154927}
+        m_TargetAssemblyTypeName: AgentPineControls, Assembly-CSharp
+        m_MethodName: TriggerSwordSwing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 47b18c3f-b7fe-4919-8fe2-8f1d457cc9cd
     m_ActionName: Player/Fire[/XInputControllerWindows/rightTrigger,/XInputControllerWindows1/rightTrigger,/Mouse/leftButton]
   - m_PersistentCalls:
@@ -320,6 +332,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5a27c37a-4700-49ba-861e-5b28949713cf
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6854477819696154927}
+        m_TargetAssemblyTypeName: AgentPineControls, Assembly-CSharp
+        m_MethodName: ShieldBlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 033c926f-a306-4c23-9baa-1a6cdbbd1147
+    m_ActionName: Player/Block[/XInputControllerWindows/leftTrigger,/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
