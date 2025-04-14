@@ -37,4 +37,10 @@ public class GameManager : MonoBehaviour
         GameObject player2 = Instantiate(player2Prefab, spawnPoints[1].position, Quaternion.identity);
         player2.GetComponent<PlayerController>().playerNumber = 2; // Assign Player 2 number
     }
+
+    private void spawnEnemy()
+    {
+
+    }
+
 }
