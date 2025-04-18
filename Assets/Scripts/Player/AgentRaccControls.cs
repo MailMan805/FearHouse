@@ -11,29 +11,22 @@ using UnityEngine;
 public class AgentRaccControls : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    void Shoot(float angleOffset, float speed)
+    public void Shoot(float angleOffset, float speed)
     {
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
         Rigidbody rigidBody = bullet.GetComponent<Rigidbody>();
         if (rigidBody != null)
         {
-            Vector3 shootDirection = Quaternion.AngleAxis(angleOffset, Vector3.up) * transform.forward;
+            //This causes the bullets to be shot at a bizarre angle when not moving, so the quaternion logic should probably be changed
+            Vector3 shootDirection = Quaternion.Euler(0, angleOffset, 0) * transform.forward;
             rigidBody.velocity = shootDirection * speed;
         }
     }
-    void Start()
+    public void TripleShot()
     {
-        
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            AudioManager.instance.PlaySound("shotgun");
-            Shoot(0,12);
-            Shoot(5,8);
-            Shoot(-5,8);
-        }
+        Shoot(0, 12);
+        Shoot(5, 8);
+        Shoot(-5, 8);
+        GetComponent<AudioSource>().Play();
     }
 }
