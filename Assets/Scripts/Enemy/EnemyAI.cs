@@ -10,6 +10,8 @@ public class EnemyAI : MonoBehaviour
     public int attackDamage = 10;
     public float attackDelay = 1.5f;
     public float detectionRange = 10f;
+    public float cooldown = 15f;
+    public int fearPointReward = 1;
 
     [Header("References")]
     public Transform Pine;

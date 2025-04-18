@@ -13,6 +13,8 @@ TagManager:
   - Needle
   - Pine
   - Racc
+  - Enemy
+  - Spawner
   layers:
   - Default
   - TransparentFX
