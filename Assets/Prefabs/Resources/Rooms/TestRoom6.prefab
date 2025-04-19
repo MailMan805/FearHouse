@@ -888,6 +888,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86feafd94be7694daa29f9a12d0d08f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAvailable: 1
+  timer: 0
   chair: 0
   couch: 0
   oven: 0
@@ -1942,6 +1944,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86feafd94be7694daa29f9a12d0d08f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAvailable: 1
+  timer: 0
   chair: 0
   couch: 0
   oven: 0

@@ -5,6 +5,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     [Header("Enemy Stats")]
+    public string name = "";
     public float health = 100f;
     public float speed = 3.5f;
     public int attackDamage = 10;

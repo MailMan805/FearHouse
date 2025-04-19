@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6afecd7f3854714b9713a196d8b4094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: chair
   health: 100
   speed: 3.5
   attackDamage: 10

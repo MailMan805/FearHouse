@@ -114,6 +114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7801775229922387315}
+  - component: {fileID: 660288806568752512}
   m_Layer: 6
   m_Name: lamp
   m_TagString: Enemy
@@ -137,3 +138,25 @@ Transform:
   - {fileID: 3261745734664468154}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &660288806568752512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3462158971881171739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6afecd7f3854714b9713a196d8b4094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: lamp
+  health: 100
+  speed: 3.5
+  attackDamage: 10
+  attackDelay: 1.5
+  detectionRange: 10
+  cooldown: 15
+  fearPointReward: 1
+  Pine: {fileID: 0}
+  Racc: {fileID: 0}
