@@ -71,8 +71,14 @@ public class Oven : MonoBehaviour
 
     void UpdateTarget()
     {
-        pine = GameObject.FindGameObjectWithTag("Pine");
-        racc = GameObject.FindGameObjectWithTag("Racc");
+        if (pine == null)
+        {
+            pine = GameObject.FindGameObjectWithTag("Pine");
+        }
+        if (racc == null)
+        {
+            racc = GameObject.FindGameObjectWithTag("Racc");
+        }
         float distToPine = pine != null ? Vector3.Distance(transform.position, pine.transform.position) : Mathf.Infinity;
         float distToRacc = racc != null ? Vector3.Distance(transform.position, racc.transform.position) : Mathf.Infinity;
 
@@ -149,7 +155,7 @@ public class Oven : MonoBehaviour
         if(player.gameObject.CompareTag("Pine") && pineIsInDangerRange)
         {
             player.GetComponent<PlayerHealth>().TakeDamage(damagePerTick);
-        Debug.Log(player.name + " takes " + damagePerTick + " fire damage.");
+            Debug.Log(player.name + " takes " + damagePerTick + " fire damage.");
         }
         if (player.gameObject.CompareTag("Racc") && raccIsInDangerRange)
         {
