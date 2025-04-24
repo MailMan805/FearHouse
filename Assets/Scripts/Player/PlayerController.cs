@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public float lookSpeedX = 2.0f, lookSpeedY = 2.0f;
     public float minLookY = -80f, maxLookY = 80f;
     private Vector2 currentRotation;
+    public bool ensnared = false;
+
 
     // Deadzone variable
     public float joystickDeadZone = 0.3f;
@@ -33,9 +35,17 @@ public class PlayerController : MonoBehaviour
     // WASD and Left Joystick movement
     public void OnMove(InputAction.CallbackContext context)
     {
-        var v = context.ReadValue<Vector2>();
-        moveInput.x = v.x;
-        moveInput.z = v.y;
+        if(!ensnared)
+        {
+            var v = context.ReadValue<Vector2>();
+            moveInput.x = v.x;
+            moveInput.z = v.y;
+        }
+        else
+        {
+            moveInput.x = 0;
+            moveInput.z = 0;
+        }
     }
 
     // Store mouse/joystick camera input
@@ -57,7 +67,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Movement
-        transform.Translate(speed * Time.deltaTime * moveInput);
+        if(!ensnared)
+        {
+            transform.Translate(speed * Time.deltaTime * moveInput);
+        }
 
         // Apply look input every frame
         if (lookInput.magnitude > joystickDeadZone)
