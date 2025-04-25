@@ -311,7 +311,7 @@ public class GenManager : MonoBehaviour
                 {
                     Destroy(collider);
                 }
-                navSurface.BuildNavMesh();
+                //navSurface.BuildNavMesh();
             }
         }
         // reGenerates the map
