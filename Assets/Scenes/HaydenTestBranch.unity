@@ -158,6 +158,8 @@ MonoBehaviour:
   Overlap:
     serializedVersion: 2
     m_Bits: 1
+  EastWestWallPrefab: {fileID: 7757495406567602793, guid: 89fc81bcbb9f39145b3b13fdd0d55726, type: 3}
+  NorthSouthWallPrefab: {fileID: 5045895782564633166, guid: 217c3ba9bb7a0d344ad20e0e8afb9896, type: 3}
 --- !u!4 &237277095
 Transform:
   m_ObjectHideFlags: 0
