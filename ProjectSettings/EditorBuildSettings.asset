@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/ToriUITest.unity
+    path: Assets/Scenes/OfficialScenes/ToriUITest.unity
     guid: a4d38116437f1af40902d0a1e4664547
   - enabled: 1
     path: Assets/Scenes/KarlTestScene.unity
