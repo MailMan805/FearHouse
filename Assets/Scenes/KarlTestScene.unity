@@ -333,6 +333,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1558254280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3503265943860433125, guid: fd67622ea7f6dbf428421b917665f8f4, type: 3}
+  m_PrefabInstance: {fileID: 1731952104}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1558254283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558254280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b6c5cae6394f9149a6cc7f833b7e255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCap: 10
+  chairCap: 1
+  couchCap: 1
+  ovenCap: 1
+  lampCap: 1
+  rugCap: 1
+  teakettle: 1
+  tv: 1
 --- !u!1001 &1731952104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -424,7 +449,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3503265943860433125, guid: fd67622ea7f6dbf428421b917665f8f4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1558254283}
   m_SourcePrefab: {fileID: 100100000, guid: fd67622ea7f6dbf428421b917665f8f4, type: 3}
 --- !u!1 &2030691629
 GameObject:

@@ -5,11 +5,14 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     [Header("Enemy Stats")]
+    public string name = "";
     public float health = 100f;
     public float speed = 3.5f;
     public int attackDamage = 10;
     public float attackDelay = 1.5f;
     public float detectionRange = 10f;
+    public float cooldown = 15f;
+    public int fearPointReward = 1;
 
     [Header("References")]
     public Transform Pine;
