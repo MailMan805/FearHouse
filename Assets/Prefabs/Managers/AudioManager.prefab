@@ -238,7 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3862c4011a9ee3468b8427a9cf0b5e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicPunkSong: {fileID: 0}
-  soundShotgun: {fileID: 0}
+  musicPunkSong: {fileID: 8300000, guid: ddb94324451d71740bed6ca7a33b17fa, type: 3}
+  soundShotgun: {fileID: 8300000, guid: ccd43ae953cd18948b9e6608d612f5f0, type: 3}
+  soundChairAttack: {fileID: 8300000, guid: 32032c9ff02b4c246ba82692853b412c, type: 3}
   musicSource: {fileID: 844860541741829379}
   soundSource: {fileID: 6620820620193677684}

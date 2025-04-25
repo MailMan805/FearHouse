@@ -10,30 +10,30 @@ using UnityEngine;
  */
 public class AgentRaccControls : MonoBehaviour
 {
-    public GameObject bulletPrefab;
-    void Shoot(float angleOffset, float speed)
+  public GameObject bulletPrefab;
+  void Shoot(float angleOffset, float speed)
+  {
+    GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+    Rigidbody rigidBody = bullet.GetComponent<Rigidbody>();
+    if (rigidBody != null)
     {
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-        Rigidbody rigidBody = bullet.GetComponent<Rigidbody>();
-        if (rigidBody != null)
-        {
-            Vector3 shootDirection = Quaternion.AngleAxis(angleOffset, Vector3.up) * transform.forward;
-            rigidBody.velocity = shootDirection * speed;
-        }
+      Vector3 shootDirection = Quaternion.AngleAxis(angleOffset, Vector3.up) * transform.forward;
+      rigidBody.velocity = shootDirection * speed;
     }
-    void Start()
-    {
-        
-    }
+  }
+  void Start()
+  {
 
-    void Update()
+  }
+
+  void Update()
+  {
+    if (Input.GetKeyDown(KeyCode.Mouse0))
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            AudioManager.instance.PlaySound("shotgun");
-            Shoot(0,12);
-            Shoot(5,8);
-            Shoot(-5,8);
-        }
+      AudioManager.instance.PlaySoundLocal("shotgun", transform);
+      Shoot(0, 12);
+      Shoot(5, 8);
+      Shoot(-5, 8);
     }
+  }
 }

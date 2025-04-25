@@ -121,6 +121,7 @@ public class AgentPineControls : MonoBehaviour
 
     IEnumerator HoldShieldUp()
     {
+        
         isShieldUp = true;
 
         // Calculate the target position for the shield, maintaining a constant orientation
