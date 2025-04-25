@@ -108,6 +108,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7f427ad5b6480714e8ae8c51afc639ba, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4232138140833286335}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7f427ad5b6480714e8ae8c51afc639ba, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7824770201129328970}
   m_SourcePrefab: {fileID: 100100000, guid: 7f427ad5b6480714e8ae8c51afc639ba, type: 3}
 --- !u!4 &1622935205534293554 stripped
 Transform:
@@ -206,3 +209,25 @@ MonoBehaviour:
   location: {fileID: 1329853248110933874}
   Health: 20
   DespawnTime: 3
+--- !u!114 &7824770201129328970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147656632537482376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6afecd7f3854714b9713a196d8b4094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: rug
+  health: 0
+  speed: 0
+  attackDamage: 0
+  attackDelay: 0
+  detectionRange: 0
+  cooldown: 0
+  fearPointReward: 2
+  Pine: {fileID: 0}
+  Racc: {fileID: 0}
