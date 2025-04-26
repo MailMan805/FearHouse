@@ -39,6 +39,35 @@ public class SpawnData : MonoBehaviour
         }
     }
 
+    public bool validSpawn (string name)
+    {
+        if (name.Equals("chair"))
+        {
+            return chair;
+        } else if (name.Equals("couch"))
+        {
+            return couch;
+        } else if (name.Equals("oven"))
+        {
+            return oven;
+        } else if (name.Equals("lamp"))
+        {
+            return lamp;
+        } else if (name.Equals("rug"))
+        {
+            return rug;
+        } else if (name.Equals("teakettle"))
+        {
+            return teakettle;
+        } else if (name.Equals("tv"))
+        {
+            return tv;
+        } else
+        {
+            return false;
+        } 
+    }
+
     IEnumerator cooldown(float time)
     {
         yield return new WaitForSeconds(time);

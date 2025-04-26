@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    public static EnemyManager Instance;
+
     // Spawn caps for enemies and the total cap chair, couch, oven, lamp, rug, tv
     public int enemyCap; //Max number of enemies allowed in a level
     public int enemyCount;
@@ -129,10 +131,17 @@ public class EnemyManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    //void Start()
-    //{
-
-    //}
+    void Start()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        } else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Update is called once per frame
     void Update()
