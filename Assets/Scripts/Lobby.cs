@@ -7,8 +7,32 @@ using UnityEngine.InputSystem;
 
 public class Lobby : MonoBehaviour
 {
+    public Transform pineSpawn, raccSpawn;
     public GameObject PlayerA, PlayerB;
-    public GameObject playerPrefabB;
+
+    /*private void Awake()
+    {
+        // Instantiate(PlayerA, pineSpawn.position, Quaternion.identity);
+        // Instantiate(PlayerB, raccSpawn.position, Quaternion.identity);
+    }*/
+
+    private void Awake()
+    {
+        if (JoinPlayersManager.Instance != null)
+        {
+            Instantiate(JoinPlayersManager.Instance.player1Prefab, pineSpawn.position, Quaternion.identity);
+            Instantiate(JoinPlayersManager.Instance.player2Prefab, raccSpawn.position, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogWarning("GameManager not found. Falling back to default prefabs.");
+            Instantiate(PlayerA, pineSpawn.position, Quaternion.identity);
+            Instantiate(PlayerB, raccSpawn.position, Quaternion.identity);
+        }
+    }
+
+
+    /*public GameObject playerPrefabB;
 
     PlayerInputManager inputManager;
 
@@ -34,5 +58,5 @@ public class Lobby : MonoBehaviour
         var player = input.gameObject;
         player.transform.position = new(id, 1, 0);
         player.GetComponent<PlayerController>().SetUp(id);
-    }
+    }*/
 }
