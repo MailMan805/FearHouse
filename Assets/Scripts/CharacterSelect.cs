@@ -16,9 +16,11 @@ public class CharacterSelect : MonoBehaviour
     private bool player1Picked = false;
     private bool player2Picked = false;
 
+    private GameObject player1Character;
+
     void Start()
     {
-        pineButton.Select(); // This sets focus for controller input
+        pineButton.Select(); // sets focus for any controllers
         continueButton.interactable = false;
         UpdateUIForPlayer();
     }
@@ -38,6 +40,7 @@ public class CharacterSelect : MonoBehaviour
         if (currentPlayer == 1)
         {
             JoinPlayersManager.Instance.player1Prefab = character;
+            player1Character = character;
             player1Picked = true;
         }
         else if (currentPlayer == 2)
@@ -56,6 +59,17 @@ public class CharacterSelect : MonoBehaviour
             currentPlayer = 2;
             player1Picked = false;
             continueButton.interactable = false;
+
+            // Disable the button for the selected character to prevent duplication
+            if (player1Character == pineCharacterPrefab)
+            {
+                pineButton.interactable = false;
+            }
+            else if (player1Character == raccCharacterPrefab)
+            {
+                raccButton.interactable = false;
+            }
+
             UpdateUIForPlayer();
         }
         else if (currentPlayer == 2 && player2Picked)
@@ -66,8 +80,10 @@ public class CharacterSelect : MonoBehaviour
 
     void UpdateUIForPlayer()
     {
-        playerSelectText.text = $"Player {currentPlayer}, choose your character";
-        pineButton.Select(); // Default selection for controller
+        playerSelectText.text = $"Player {currentPlayer}, choose your character and then click 'Ready'!";
+        if (pineButton.interactable)
+            pineButton.Select();
+        else
+            raccButton.Select();
     }
 }
-
