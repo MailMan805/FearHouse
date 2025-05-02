@@ -1,9 +1,90 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    int id;
+    Vector3 moveInput;
+    float speed = 4.0f;
+
+    // Camera rotation variables
+    public float lookSpeedX = 2.0f, lookSpeedY = 2.0f;
+    public float minLookY = -80f, maxLookY = 80f;
+    private Vector2 currentRotation;
+    public bool ensnared = false;
+
+
+    // Deadzone variable
+    public float joystickDeadZone = 0.3f;
+
+    // Store look input persistently
+    private Vector2 lookInput;
+
+    public void Start()
+    {
+      
+    }
+
+    public void SetUp(int id)
+    {
+        this.id = id;
+    }
+
+    // WASD and Left Joystick movement
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        if(!ensnared)
+        {
+            var v = context.ReadValue<Vector2>();
+            moveInput.x = v.x;
+            moveInput.z = v.y;
+        }
+        else
+        {
+            moveInput.x = 0;
+            moveInput.z = 0;
+        }
+    }
+
+    // Store mouse/joystick camera input
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        lookInput = context.ReadValue<Vector2>();
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        // Functions from AgentPineControls and AgentRaccControls are passed through this in the the inspector view. The revolution will be streamed on Facebook Live on 6/7/2026.
+    }
+
+    public void OnBlock()
+    {
+        // Function for left trigger on controller, and right click on mouse
+    }
+
+    void Update()
+    {
+        // Movement
+        if(!ensnared)
+        {
+            transform.Translate(speed * Time.deltaTime * moveInput);
+        }
+
+        // Apply look input every frame
+        if (lookInput.magnitude > joystickDeadZone)
+        {
+            currentRotation.x += lookInput.x * lookSpeedX;
+            currentRotation.y -= lookInput.y * lookSpeedY;
+        }
+
+        currentRotation.y = Mathf.Clamp(currentRotation.y, minLookY, maxLookY);
+        transform.rotation = Quaternion.Euler(currentRotation.y, currentRotation.x, 0);
+    }
+
+
+    /*
     public float moveSpeed = 5f;
     public float cameraRotationSpeed = 5f; // Speed at which the camera rotates
     private Camera playerCamera; // Reference to the player's camera
@@ -39,6 +120,13 @@ public class PlayerController : MonoBehaviour
         Vector3 move = new Vector3(0, 0, moveZ) * moveSpeed * Time.deltaTime;
         transform.Translate(move);
 
+        if(Input.GetButtonDown("Horizontal"))
+        {
+            if(playerNumber == 1)
+            {
+
+            }
+        }
         // Rotate the camera based on horizontal movement
         if (moveX != 0)
         {
@@ -53,4 +141,5 @@ public class PlayerController : MonoBehaviour
         // Increment the current rotation
         transform.rotation *= Quaternion.Euler(0, rotationAngle, 0);
     }
+    */
 }

@@ -6,10 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/ToriUITest.unity
+    path: Assets/Scenes/OfficialScenes/ToriUITest.unity
     guid: a4d38116437f1af40902d0a1e4664547
   - enabled: 1
     path: Assets/Scenes/KarlTestScene.unity
     guid: 2d60c132663905d4a88bb8b9281574a9
   m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: c54496d2ac303304f85e2680cada2811, type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: 142e8a7b12614204c84337dc18f81c0d, type: 2}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 8516fb28af016b44fa77b65a0eb241c9, type: 3}
