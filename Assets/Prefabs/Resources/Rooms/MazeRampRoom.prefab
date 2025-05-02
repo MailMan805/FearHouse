@@ -4324,7 +4324,7 @@ GameObject:
   - component: {fileID: 3731430904484092509}
   - component: {fileID: 9090317668782400025}
   m_Layer: 0
-  m_Name: Room2
+  m_Name: MazeRampRoom
   m_TagString: Root
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
