@@ -784,13 +784,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86feafd94be7694daa29f9a12d0d08f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chair: 0
-  couch: 0
-  oven: 0
-  lamp: 0
-  rug: 0
-  teakettle: 0
-  tv: 0
+  isAvailable: 1
+  timer: 0
+  chair: 1
+  couch: 1
+  oven: 1
+  lamp: 1
+  rug: 1
+  teakettle: 1
+  tv: 1
 --- !u!1 &4905580961584543486
 GameObject:
   m_ObjectHideFlags: 0
