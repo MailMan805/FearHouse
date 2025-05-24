@@ -890,13 +890,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAvailable: 1
   timer: 0
-  chair: 0
-  couch: 0
-  oven: 0
-  lamp: 0
-  rug: 0
-  teakettle: 0
-  tv: 0
+  chair: 1
+  couch: 1
+  oven: 1
+  lamp: 1
+  rug: 1
+  teakettle: 1
+  tv: 1
 --- !u!1 &1637848392423352016
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,13 +1946,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAvailable: 1
   timer: 0
-  chair: 0
-  couch: 0
-  oven: 0
-  lamp: 0
-  rug: 0
-  teakettle: 0
-  tv: 0
+  chair: 1
+  couch: 1
+  oven: 1
+  lamp: 1
+  rug: 1
+  teakettle: 1
+  tv: 1
 --- !u!1 &3951585218368023735
 GameObject:
   m_ObjectHideFlags: 0

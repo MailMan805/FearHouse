@@ -232,13 +232,73 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rooms: []
   availableNodes: []
-  tokens: 100
+  tokens: 5
   Overlap:
     serializedVersion: 2
     m_Bits: 9
   navSurface: {fileID: 335488515}
   EastWestWallPrefab: {fileID: 7757495406567602793, guid: 89fc81bcbb9f39145b3b13fdd0d55726, type: 3}
   NorthSouthWallPrefab: {fileID: 5045895782564633166, guid: 217c3ba9bb7a0d344ad20e0e8afb9896, type: 3}
+--- !u!1 &880449066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 880449068}
+  - component: {fileID: 880449067}
+  m_Layer: 0
+  m_Name: EnemyManga
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &880449067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880449066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b6c5cae6394f9149a6cc7f833b7e255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCap: 10
+  enemyCount: 0
+  chairCap: 3
+  chairCount: 0
+  couchCap: 2
+  couchCount: 0
+  ovenCap: 1
+  ovenCount: 0
+  lampCap: 1
+  lampCount: 0
+  rugCap: 1
+  rugCount: 0
+  teakettleCap: 1
+  teakettleCount: 0
+  tvCap: 1
+  tvCount: 0
+--- !u!4 &880449068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880449066}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -21.47778, y: -0.34404278, z: -3.4572182}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1430131726
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,31 +393,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1558254280 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3503265943860433125, guid: fd67622ea7f6dbf428421b917665f8f4, type: 3}
-  m_PrefabInstance: {fileID: 1731952104}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1558254283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1558254280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b6c5cae6394f9149a6cc7f833b7e255, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyCap: 10
-  chairCap: 1
-  couchCap: 1
-  ovenCap: 1
-  lampCap: 1
-  rugCap: 1
-  teakettle: 1
-  tv: 1
 --- !u!1001 &1731952104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -397,6 +432,10 @@ PrefabInstance:
     - target: {fileID: 6905937799774249905, guid: fd67622ea7f6dbf428421b917665f8f4, type: 3}
       propertyPath: enemyCap
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905937799774249905, guid: fd67622ea7f6dbf428421b917665f8f4, type: 3}
+      propertyPath: enemyTokens
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6905937799774249905, guid: fd67622ea7f6dbf428421b917665f8f4, type: 3}
       propertyPath: spawnRateOfChange
@@ -449,10 +488,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3503265943860433125, guid: fd67622ea7f6dbf428421b917665f8f4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1558254283}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd67622ea7f6dbf428421b917665f8f4, type: 3}
 --- !u!1 &2030691629
 GameObject:
@@ -573,3 +609,4 @@ SceneRoots:
   - {fileID: 2030691632}
   - {fileID: 1731952104}
   - {fileID: 335488516}
+  - {fileID: 880449068}

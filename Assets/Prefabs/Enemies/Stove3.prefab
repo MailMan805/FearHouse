@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 1584243895831102045}
   - component: {fileID: 910635821009495588}
   - component: {fileID: 8008150836347430242}
+  - component: {fileID: 6557530867489335706}
   m_Layer: 0
   m_Name: Stove3
   m_TagString: Untagged
@@ -276,6 +277,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &6557530867489335706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317014143621767554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6afecd7f3854714b9713a196d8b4094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: oven
+  health: 0
+  speed: 0
+  attackDamage: 0
+  attackDelay: 0
+  detectionRange: 0
+  cooldown: 0
+  fearPointReward: 5
+  Pine: {fileID: 0}
+  Racc: {fileID: 0}
 --- !u!1 &1541993537379652630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,7 +1217,6 @@ GameObject:
   - component: {fileID: 1320918938022092146}
   - component: {fileID: 5608078602472868572}
   - component: {fileID: 1764044812784055321}
-  - component: {fileID: 1719613346299443854}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -6012,16 +6034,3 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &1719613346299443854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9009360990195945849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a057649d674d1f4b86d8943520c1a82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damagePerTick: 5
