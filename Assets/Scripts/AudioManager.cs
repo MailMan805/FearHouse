@@ -39,8 +39,8 @@ public class AudioManager : MonoBehaviour
     if (instance == null)
     {
       musicEvents = new Dictionary<string, AudioEvent>();
-      RegisterMusic();
       soundEvents = new Dictionary<string, AudioEvent>();
+      RegisterMusic();
       RegisterSounds();
       instance = this;
     }
@@ -49,6 +49,9 @@ public class AudioManager : MonoBehaviour
       Destroy(gameObject);
     }
   }
+  public void Update()
+  {
+  }
   public void RegisterMusic()
   {
 
@@ -56,6 +59,7 @@ public class AudioManager : MonoBehaviour
   public void RegisterSounds()
   {
     soundEvents.Add("shotgun", AudioEvent.Of(soundShotgun));
+    soundEvents.Add("mood", AudioEvent.Of(soundShotgun));
   }
   public void Play(AudioSource source, string audio)
   {
@@ -70,12 +74,21 @@ public class AudioManager : MonoBehaviour
   {
     Play(soundSource, audio);
   }
-  public void PlaySoundAt(string audio, Transform transform)
+  public void PlaySoundAt(string audio, Vector3 position, float maxDistance = 1f)
   {
     GameObject soundPlayer = new GameObject();
-    soundPlayer.transform.position = transform.position;
+    soundPlayer.transform.position = position;
     AudioSource source = soundPlayer.AddComponent<AudioSource>();
+    source.maxDistance = maxDistance;
     Play(source, audio);
     Destroy(soundPlayer, source.clip.length);
+  }
+  public void PlayMoodSound()
+  {
+    GameObject pines = GameObject.FindGameObjectWithTag("Pine");
+    GameObject racc = GameObject.FindGameObjectWithTag("Racc");
+    Transform transform = Random.Range(0, 2) == 0 ? pines.transform : racc.transform;
+    Vector3 randomPosition = transform.position + new Vector3(Random.Range(-320f, 320f), 0f, Random.Range(-320f, 320f));
+    PlaySoundAt("mood", randomPosition);
   }
 }
