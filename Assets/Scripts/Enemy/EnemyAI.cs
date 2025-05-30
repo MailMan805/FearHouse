@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    public Animator anim;
     [Header("Enemy Stats")]
     public string name = "";
     public float health = 100f;
@@ -23,27 +24,56 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
-        Pine = FindAnyObjectByType<AgentPineControls>().transform;
-        Racc = FindAnyObjectByType<AgentRaccControls>().transform;
+        var pineObj = FindAnyObjectByType<AgentPineControls>();
+        if (pineObj != null) Pine = pineObj.transform;
+
+        var raccObj = FindAnyObjectByType<AgentRaccControls>();
+        if (raccObj != null) Racc = raccObj.transform;
+
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
     }
 
     void Update()
     {
-        if (Pine == null || Racc == null)
+        // Recheck players in case they were not found earlier or were destroyed and respawned
+        if (Pine == null)
         {
-            return;
+            var pineObj = FindAnyObjectByType<AgentPineControls>();
+            if (pineObj != null) Pine = pineObj.transform;
+        }
+        if (Racc == null)
+        {
+            var raccObj = FindAnyObjectByType<AgentRaccControls>();
+            if (raccObj != null) Racc = raccObj.transform;
         }
 
-        float distanceToPlayer1 = Vector3.Distance(transform.position, Pine.position);
-        float distanceToPlayer2 = Vector3.Distance(transform.position, Racc.position);
+        Transform target = null;
+        float closestDistance = Mathf.Infinity;
 
-        Transform closestPlayer = distanceToPlayer1 < distanceToPlayer2 ? Pine : Racc;
-
-        if (Mathf.Min(distanceToPlayer1, distanceToPlayer2) <= detectionRange)
+        if (Pine != null)
         {
-            agent.SetDestination(closestPlayer.position);
+            float dist = Vector3.Distance(transform.position, Pine.position);
+            if (dist <= detectionRange && dist < closestDistance)
+            {
+                target = Pine;
+                closestDistance = dist;
+            }
+        }
+
+        if (Racc != null)
+        {
+            float dist = Vector3.Distance(transform.position, Racc.position);
+            if (dist <= detectionRange && dist < closestDistance)
+            {
+                target = Racc;
+                closestDistance = dist;
+            }
+        }
+
+        if (target != null)
+        {
+            agent.SetDestination(target.position);
         }
     }
 
@@ -51,7 +81,16 @@ public class EnemyAI : MonoBehaviour
     {
         if ((other.CompareTag("Pine") || other.CompareTag("Racc")) && canAttack)
         {
+            anim.SetBool("isAttacking", true);
             StartCoroutine(AttackPlayer(other.gameObject));
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if ((other.CompareTag("Pine") || other.CompareTag("Racc")))
+        {
+            anim.SetBool("isAttacking", false);
         }
     }
 
