@@ -25,21 +25,17 @@ public class AudioManager : MonoBehaviour
 {
   public static AudioManager instance;
 
-  public AudioClip musicPunkSong;
-  public AudioClip soundShotgun;
-  public AudioClip soundChairAttack;
-
-  public AudioSource musicSource;
-  public AudioSource soundSource;
-  public Dictionary<string, AudioEvent> musicEvents;
-  public Dictionary<string, AudioEvent> soundEvents;
+  public AudioSource MusicSource;
+  public AudioSource SoundSource;
+  private Dictionary<string, AudioEvent> MusicEvents;
+  private Dictionary<string, AudioEvent> SoundEvents;
 
   private void Awake()
   {
     if (instance == null)
     {
-      musicEvents = new Dictionary<string, AudioEvent>();
-      soundEvents = new Dictionary<string, AudioEvent>();
+      MusicEvents = new Dictionary<string, AudioEvent>();
+      SoundEvents = new Dictionary<string, AudioEvent>();
       RegisterMusic();
       RegisterSounds();
       instance = this;
@@ -49,32 +45,30 @@ public class AudioManager : MonoBehaviour
       Destroy(gameObject);
     }
   }
-  public void Update()
-  {
-  }
   public void RegisterMusic()
   {
 
   }
   public void RegisterSounds()
   {
-    soundEvents.Add("shotgun", AudioEvent.Of(soundShotgun));
-    soundEvents.Add("mood", AudioEvent.Of(soundShotgun));
+
   }
   public void Play(AudioSource source, string audio)
   {
-    source.clip = soundEvents[audio].GetClip();
+    source.clip = SoundEvents[audio].GetClip();
     source.Play();
   }
   public void PlayMusic(string audio)
   {
-    Play(musicSource, audio);
+    Play(MusicSource, audio);
   }
   public void PlaySound(string audio)
   {
-    Play(soundSource, audio);
+    Play(SoundSource, audio);
   }
-  public void PlaySoundAt(string audio, Vector3 position, float maxDistance = 1f)
+
+  //Plays a sound at a specific location by creating and destroying an object with an audio source.
+  public void PlayAt(string audio, Vector3 position, float maxDistance = 1f)
   {
     GameObject soundPlayer = new GameObject();
     soundPlayer.transform.position = position;
@@ -83,12 +77,13 @@ public class AudioManager : MonoBehaviour
     Play(source, audio);
     Destroy(soundPlayer, source.clip.length);
   }
-  public void PlayMoodSound()
+  // A specific implementation of PlaySoundAt with Mood sounds, where the object is placed at a random location offset from either player
+  public void PlayMood()
   {
     GameObject pines = GameObject.FindGameObjectWithTag("Pine");
     GameObject racc = GameObject.FindGameObjectWithTag("Racc");
     Transform transform = Random.Range(0, 2) == 0 ? pines.transform : racc.transform;
-    Vector3 randomPosition = transform.position + new Vector3(Random.Range(-320f, 320f), 0f, Random.Range(-320f, 320f));
-    PlaySoundAt("mood", randomPosition);
+    Vector3 randomPosition = transform.position + new Vector3(Random.Range(-100f, 100f), 0f, Random.Range(-100f, 100f));
+    PlayAt("Mood", randomPosition);
   }
 }
