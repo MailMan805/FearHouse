@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 7589901894171967625}
   - component: {fileID: 4081934610996148093}
   - component: {fileID: 866242995422294361}
+  - component: {fileID: 5751286403061187586}
   m_Layer: 0
   m_Name: Agent Racc
   m_TagString: Racc
@@ -369,6 +370,7 @@ MonoBehaviour:
   lookSpeedY: 0.2
   minLookY: -40
   maxLookY: 40
+  ensnared: 0
   joystickDeadZone: 0.1
 --- !u!114 &2162654493629267559
 MonoBehaviour:
@@ -531,11 +533,29 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5a27c37a-4700-49ba-861e-5b28949713cf
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 033c926f-a306-4c23-9baa-1a6cdbbd1147
+    m_ActionName: Player/Block[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 6629307548799967066}
+--- !u!114 &5751286403061187586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7093553485270074356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce89d92f17a251647ae8ec9dce97235b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  attackDamage: 0
 --- !u!1001 &97883024157526093
 PrefabInstance:
   m_ObjectHideFlags: 0

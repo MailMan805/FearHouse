@@ -79,7 +79,7 @@ public class EnemyAI : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if ((other.CompareTag("Pine") || other.CompareTag("Racc")) && canAttack)
+        if ((other.CompareTag("Pine") || other.CompareTag("Racc")) && canAttack && anim != null)
         {
             anim.SetBool("isAttacking", true);
             StartCoroutine(AttackPlayer(other.gameObject));
@@ -88,7 +88,7 @@ public class EnemyAI : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if ((other.CompareTag("Pine") || other.CompareTag("Racc")))
+        if ((other.CompareTag("Pine") || other.CompareTag("Racc")) && anim != null)
         {
             anim.SetBool("isAttacking", false);
         }

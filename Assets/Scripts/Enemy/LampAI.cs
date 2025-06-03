@@ -86,7 +86,7 @@ public class LampAI : MonoBehaviour
                 Vector3 dodgeDir = Vector3.Cross(toTarget, Vector3.up).normalized;
 
                 // Randomly choose left or right
-                if (Random.value > 0.5f)
+                if (Random.value > 0.8f)
                     dodgeDir *= -1;
 
                 Vector3 dodgeDestination = transform.position + dodgeDir * 5f;

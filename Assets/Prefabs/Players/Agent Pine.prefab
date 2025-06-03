@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 3839547073156475920}
   - component: {fileID: 4423197706714053812}
   - component: {fileID: 6854477819696154927}
-  - component: {fileID: 4610204177025031326}
   - component: {fileID: 6700603213161615064}
   - component: {fileID: 758836023103561642}
+  - component: {fileID: 4658823687409770144}
   m_Layer: 0
   m_Name: Agent Pine
   m_TagString: Pine
@@ -157,6 +157,7 @@ MonoBehaviour:
   lookSpeedY: 0.2
   minLookY: -40
   maxLookY: 40
+  ensnared: 0
   joystickDeadZone: 0.1
 --- !u!114 &6854477819696154927
 MonoBehaviour:
@@ -185,19 +186,6 @@ MonoBehaviour:
   shieldSwingOffset: {x: 0.5, y: 0.1, z: 0}
   moveSpeed: 5
   cameraRotationSpeed: 5
---- !u!114 &4610204177025031326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3297392955621445126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c72fffb44c9a3124d9d5ca5e0e318210, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
 --- !u!65 &6700603213161615064
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -353,6 +341,20 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 5398642811890746221}
+--- !u!114 &4658823687409770144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3297392955621445126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce89d92f17a251647ae8ec9dce97235b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  attackDamage: 10
 --- !u!1 &7484415164662683771
 GameObject:
   m_ObjectHideFlags: 0
