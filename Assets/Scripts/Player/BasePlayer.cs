@@ -7,7 +7,7 @@ public class BasePlayer: MonoBehaviour
 {
     public int maxHealth;
     public int attackDamage; //average attack damage
-    private int currentHealth;
+    public int currentHealth;
     private bool down = false;
     public void Hurt(int damage)
     {

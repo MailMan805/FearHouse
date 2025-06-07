@@ -13,11 +13,11 @@ public class TestDummy : MonoBehaviour
             AgentPineControls AgentPineControls = other.GetComponentInParent<AgentPineControls>();
 
             // Only register the hit if the sword is currently swinging (canHit is true)
-            if (AgentPineControls != null && AgentPineControls.CanHit())
-            {
-                // Print a message to the console
-                Debug.Log("The needle hit the object while swinging!");
-            }
+            //if (AgentPineControls != null && AgentPineControls.CanHit())
+            //{
+            //    // Print a message to the console
+            //    Debug.Log("The needle hit the object while swinging!");
+            //}
         }
     }
 }

@@ -4,185 +4,106 @@ using UnityEngine;
 
 public class AgentPineControls : MonoBehaviour
 {
-    public GameObject sword;  // The sword object
-    public GameObject shield;  // The shield object
-    public Transform player;   // The player for rotation reference
+    //This handles pines animations and attack/block
+    public Animator pineIdol;
+    public Animator pineBlock;
+    public Animator pineAttack;
+    public Animator pineDowned;
+    public Animator pineRevived;
+    public Animator pineArms;
+    public Animator pineRunning;
 
-    // Sword swing parameters
-    public float swordSwingAngleX = 25f;   // Adjusted for sword swing
-    public float swordSwingAngleY = -12.02f; // For the left-to-right swing
-    public float swordSwingAngleZ = 16.9f;   // Adjusted for sword swing
-    public float swordSwingSpeed = 5f;       // Adjusted speed of the sword swing
-    public Vector3 swordSwingOffset = new Vector3(-0.21f, 0.5f, 0.99f); // Updated position offset for sword swing
+    public GameObject Idol;
+    public GameObject IdolBody; //Just the torso for running
+    public GameObject RunningLegs;
+    public GameObject AttackingBody;
+    public GameObject BlockingBody;
+    public GameObject Downed;
+    public GameObject Revived;
+    public GameObject ArmsNormal;
+    public GameObject ArmsAttack;
+    public GameObject ArmsBlock;
+    public GameObject ArmsHoldBlock;
 
-    // Shield parameters
-    public float shieldUpAngleX = 15f;       // Angle to raise the shield
-    public float shieldSwingAngleY = 90f;     // For the left-to-right swing
-    public float shieldSwingAngleZ = 0f;      // Adjust for shield swing
-    public float shieldSwingSpeed = 5f;        // Speed of the shield swing
-    public Vector3 shieldSwingOffset = new Vector3(0f, 0.5f, 0f); // Position offset for shield swing
+    public PlayerController Controller;
+    public BasePlayer player;
 
-    private bool isSwordSwinging = false;  // Sword swing state check
-    private bool isShieldUp = false;       // Shield up state check
-    private bool canHit = false;            // Can hit flag during sword swing
+    public bool wasDowned = false;
+    private bool isReviving = false;
 
-    private Quaternion swordInitialRotation;  // Initial rotation of the sword
-    private Vector3 swordInitialPosition;     // Initial position of the sword
-
-    private Quaternion shieldInitialRotation;  // Initial rotation of the shield
-    private Vector3 shieldInitialPosition;     // Initial position of the shield
-
-    // Movement variables
-    public float moveSpeed = 5f;
-    public float cameraRotationSpeed = 5f; // Speed at which the camera rotates
-    void Start()
+    private void Start()
     {
-        // Store the initial position and rotation of the sword
-        if (sword != null)
-        {
-            swordInitialRotation = sword.transform.localRotation;
-            swordInitialPosition = sword.transform.localPosition;
-        }
-        else
-        {
-            Debug.LogError("Sword object not assigned!");
-        }
-
-        // Store the initial position and rotation of the shield
-        if (shield != null)
-        {
-            shieldInitialRotation = shield.transform.localRotation;
-            shieldInitialPosition = shield.transform.localPosition;
-        }
-        else
-        {
-            Debug.LogError("Shield object not assigned!");
-        }
+        ResetAllStates();
+        Idol.SetActive(true);
+        ArmsNormal.SetActive(true);
     }
 
-    void Update()
-    { 
-        /*
-        // Start swinging the sword when "E" is pressed
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !isSwordSwinging && !isShieldUp)
+    private void Update()
+    {
+        // Handle movement animations
+        if(!wasDowned)
         {
-            StartCoroutine(SwingSword());
-        }
-        */
-
-        /*// Hold the shield up when "Q" is held down
-        if (Input.GetKey(KeyCode.Q))
-        {
-            if (!isShieldUp)
+            if ((Controller.moveInput.x != 0 || Controller.moveInput.z != 0))
             {
-                StartCoroutine(HoldShieldUp());
+                Idol.SetActive(false);
+                RunningLegs.SetActive(true);
+                IdolBody.SetActive(true);
+            }
+            else
+            {
+                Idol.SetActive(true);
+                RunningLegs.SetActive(false);
+                IdolBody.SetActive(false);
             }
         }
-        else if (isShieldUp) // Reset shield when Q is released
-        {
-            StartCoroutine(ResetShield());
-        }*/
-    }
 
-    public void TriggerSwordSwing()
-    {
-        if (!isSwordSwinging && !isShieldUp)
+        // Handle downed state
+        if (player.currentHealth <= 0)
         {
-            StartCoroutine(SwingSword());
+            if (!wasDowned)
+            {
+                // Only reset and play when first entering downed state
+                ResetAllStates();
+                Controller.ensnared = true;
+                Controller.OnDowned();
+                Downed.SetActive(true);
+                pineDowned.Play("Downed", -1, 0f); // Restart the animation from beginning
+                wasDowned = true;
+            }
+        }
+        else if (wasDowned && player.currentHealth > 0 && !isReviving) 
+        {
+            isReviving = true;
+            ResetAllStates();
+            StartCoroutine(Revive());
         }
     }
 
-    public void ShieldBlock()
+    IEnumerator Revive()
     {
-        if (!isShieldUp)
-        {
-            StartCoroutine(HoldShieldUp());
-        }
-        else if (isShieldUp) // Reset shield when Q is released
-        {
-            StartCoroutine(ResetShield());
-        }
+        Revived.SetActive(true);
+        pineRevived.Play("Revived", -1, 0f); // Restart the animation from beginning
+        yield return new WaitForSeconds(1.1f);
+        Revived.SetActive(false);
+        ArmsNormal.SetActive(true);
+        Controller.ensnared = false;
+        wasDowned = false;
+        isReviving = false;
+        Controller.OnRevived();
     }
 
-    IEnumerator SwingSword()
+    private void ResetAllStates()
     {
-        isSwordSwinging = true;
-        canHit = true;  // Allow hitting during the swing
-
-        // Set the sword's rotation to match the player's facing direction
-        sword.transform.rotation = player.rotation;
-
-        // Calculate the target rotation and position for the swing
-        Quaternion targetRotation = Quaternion.Euler(swordSwingAngleX, swordSwingAngleY, swordSwingAngleZ);
-        Vector3 targetPosition = swordInitialPosition + swordSwingOffset; // Fixed horizontal offset
-
-        // Rotate and move the sword to the swing target smoothly
-        float timeElapsed = 0;
-        while (timeElapsed < 1f)
-        {
-            timeElapsed += Time.deltaTime * swordSwingSpeed;
-            sword.transform.localRotation = Quaternion.Slerp(swordInitialRotation, targetRotation, timeElapsed);
-            sword.transform.localPosition = Vector3.Lerp(swordInitialPosition, targetPosition, timeElapsed);  // Smoothly move to the target position
-            yield return null;
-        }
-
-        // Brief pause at the end of the swing
-        yield return new WaitForSeconds(0.05f);
-
-        // Return the sword to its initial position and rotation smoothly
-        timeElapsed = 0;
-        while (timeElapsed < 1f)
-        {
-            timeElapsed += Time.deltaTime * swordSwingSpeed;
-            sword.transform.localRotation = Quaternion.Slerp(targetRotation, swordInitialRotation, timeElapsed);
-            sword.transform.localPosition = Vector3.Lerp(targetPosition, swordInitialPosition, timeElapsed);  // Return to the initial position
-            yield return null;
-        }
-
-        // End of sword swing
-        isSwordSwinging = false;
-        canHit = false;  // Disable hitting after the swing
-    }
-
-    IEnumerator HoldShieldUp()
-    {
-        
-        isShieldUp = true;
-
-        // Calculate the target position for the shield, maintaining a constant orientation
-        Vector3 targetPosition = shieldInitialPosition + shieldSwingOffset;
-
-        // Smoothly raise the shield without changing its orientation based on player rotation
-        float timeElapsed = 0;
-        while (timeElapsed < 1f)
-        {
-            timeElapsed += Time.deltaTime * shieldSwingSpeed;
-            // Set the shield rotation to a fixed angle while raising it
-            shield.transform.localRotation = Quaternion.Euler(shieldUpAngleX, 0f, 0f);
-            shield.transform.localPosition = Vector3.Lerp(shieldInitialPosition, targetPosition, timeElapsed);
-            yield return null;
-        }
-    }
-
-    IEnumerator ResetShield()
-    {
-        isShieldUp = false;
-
-        // Reset the shield to its initial position and rotation smoothly
-        float timeElapsed = 0;
-        while (timeElapsed < 1f)
-        {
-            timeElapsed += Time.deltaTime * shieldSwingSpeed;
-            shield.transform.localRotation = Quaternion.Slerp(shield.transform.localRotation, shieldInitialRotation, timeElapsed);
-            shield.transform.localPosition = Vector3.Lerp(shield.transform.localPosition, shieldInitialPosition, timeElapsed);
-            yield return null;
-        }
-
-    }
-
-    // Method to check if the sword can hit something
-    public bool CanHit()
-    {
-        return canHit;
+        Idol.SetActive(false);
+        IdolBody.SetActive(false);
+        RunningLegs.SetActive(false);
+        AttackingBody.SetActive(false);
+        BlockingBody.SetActive(false);
+        Downed.SetActive(false);
+        Revived.SetActive(false);
+        ArmsNormal.SetActive(false);
+        ArmsAttack.SetActive(false);
+        ArmsBlock.SetActive(false);
+        ArmsHoldBlock.SetActive(false);
     }
 }

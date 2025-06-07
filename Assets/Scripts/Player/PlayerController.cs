@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     int id;
-    Vector3 moveInput;
+    public Vector3 moveInput;
+    public GameObject cam; // Reference to your camera GameObject
     float speed = 4.0f;
 
     // Camera rotation variables
@@ -14,7 +15,6 @@ public class PlayerController : MonoBehaviour
     public float minLookY = -80f, maxLookY = 80f;
     private Vector2 currentRotation;
     public bool ensnared = false;
-
 
     // Deadzone variable
     public float joystickDeadZone = 0.3f;
@@ -24,7 +24,11 @@ public class PlayerController : MonoBehaviour
 
     public void Start()
     {
-      
+        // Make sure we have a camera reference
+        if (cam == null)
+        {
+            Debug.LogError("Camera reference not set in PlayerController!");
+        }
     }
 
     public void SetUp(int id)
@@ -35,7 +39,7 @@ public class PlayerController : MonoBehaviour
     // WASD and Left Joystick movement
     public void OnMove(InputAction.CallbackContext context)
     {
-        if(!ensnared)
+        if (!ensnared)
         {
             var v = context.ReadValue<Vector2>();
             moveInput.x = v.x;
@@ -56,90 +60,45 @@ public class PlayerController : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        // Functions from AgentPineControls and AgentRaccControls are passed through this in the the inspector view. The revolution will be streamed on Facebook Live on 6/7/2026.
+        // Your attack functionality
     }
 
     public void OnBlock()
     {
-        // Function for left trigger on controller, and right click on mouse
+        // Block functionality
+    }
+
+    public void OnDowned()
+    {
+        cam.transform.position -= new Vector3(0, 1, 0);
+    }
+
+    public void OnRevived()
+    {
+        cam.transform.position += new Vector3(0, 1, 0);
     }
 
     void Update()
     {
-        // Movement
-        if(!ensnared)
+        // Movement - still moves the player object
+        if (!ensnared)
         {
             transform.Translate(speed * Time.deltaTime * moveInput);
         }
 
-        // Apply look input every frame
-        if (lookInput.magnitude > joystickDeadZone)
+        // Apply look input every frame (now only affects the camera)
+        if (lookInput.magnitude > joystickDeadZone && cam != null)
         {
             currentRotation.x += lookInput.x * lookSpeedX;
             currentRotation.y -= lookInput.y * lookSpeedY;
         }
 
         currentRotation.y = Mathf.Clamp(currentRotation.y, minLookY, maxLookY);
-        transform.rotation = Quaternion.Euler(currentRotation.y, currentRotation.x, 0);
+
+        // Rotate player left/right (yaw)
+        transform.rotation = Quaternion.Euler(0, currentRotation.x, 0);
+
+        // Rotate camera up/down (pitch) - only the camera
+        cam.transform.localRotation = Quaternion.Euler(currentRotation.y, 0, 0);
     }
-
-
-    /*
-    public float moveSpeed = 5f;
-    public float cameraRotationSpeed = 5f; // Speed at which the camera rotates
-    private Camera playerCamera; // Reference to the player's camera
-    public int playerNumber; // 1 for Player 1, 2 for Player 2
-
-    void Start()
-    {
-        
-        // Find the child camera associated with this player
-        playerCamera = GetComponentInChildren<Camera>();
-        if (playerCamera == null)
-        {
-            Debug.LogError("No camera found as a child of the player!");
-        }
-    }
-
-    void Update()
-    {
-        //HIGHLY EXPERIMENTAL
-        BasePlayer basePlayer = GetComponentInChildren<BasePlayer>();
-        if (basePlayer != null && basePlayer.IsDown())
-        {
-            return;
-        }
-        // Determine the input axes based on player number
-        string horizontalAxis = playerNumber == 1 ? "Horizontal" : "HorizontalP2";
-        string verticalAxis = playerNumber == 1 ? "Vertical" : "VerticalP2";
-
-        float moveX = Input.GetAxis(horizontalAxis);
-        float moveZ = Input.GetAxis(verticalAxis);
-
-        // Calculate movement direction
-        Vector3 move = new Vector3(0, 0, moveZ) * moveSpeed * Time.deltaTime;
-        transform.Translate(move);
-
-        if(Input.GetButtonDown("Horizontal"))
-        {
-            if(playerNumber == 1)
-            {
-
-            }
-        }
-        // Rotate the camera based on horizontal movement
-        if (moveX != 0)
-        {
-            RotateCamera(moveX);
-        }
-    }
-
-    void RotateCamera(float moveX)
-    {
-        float rotationAngle = moveX > 0 ? 40 * cameraRotationSpeed * Time.deltaTime : -40 * cameraRotationSpeed * Time.deltaTime; // Adjust as needed
-
-        // Increment the current rotation
-        transform.rotation *= Quaternion.Euler(0, rotationAngle, 0);
-    }
-    */
 }

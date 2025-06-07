@@ -1,0 +1,328 @@
+fileFormatVersion: 2
+guid: a565cd983b61a6044b49840ef60ff98f
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Scene
+      takeName: Scene
+      internalID: -623603649343465320
+      firstFrame: 1
+      lastFrame: 408
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: PinesIdolAnimation(Clone)
+      parentName: 
+      position: {x: -0, y: 0.087859154, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pines.Pelvis
+      parentName: PinesIdolAnimation(Clone)
+      position: {x: 0.060964078, y: 0, z: 3.3898084}
+      rotation: {x: 0.57874465, y: 0.35534582, z: 0.4956507, w: 0.5414004}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Pines.Pelvis
+      parentName: Pines.Pelvis
+      position: {x: -0.07546437, y: 0.19309852, z: -0.004789371}
+      rotation: {x: -0.62845427, y: 0.05692367, z: -0.060363296, w: 0.77340883}
+      scale: {x: 0.7121219, y: 0.80157334, z: 0.7121218}
+    - name: Pines.Torso
+      parentName: Pines.Pelvis
+      position: {x: -0.000000055879354, y: 0.37818524, z: 0.000000048428774}
+      rotation: {x: 0.05187181, y: 0.10354067, z: -0.06022544, w: 0.9914442}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pines.TopTorso
+      parentName: Pines.Torso
+      position: {x: -0.08639097, y: 0.9740196, z: 0.012086101}
+      rotation: {x: -0.7067293, y: -0.023105115, z: 0.023105491, w: 0.7067292}
+      scale: {x: 0.71212184, y: 0.80157334, z: 0.71212184}
+    - name: Pines.Neck
+      parentName: Pines.Torso
+      position: {x: -0.0000003632158, y: 1.3582335, z: -0.000000029802322}
+      rotation: {x: -0.00000016028446, y: 0.00000025261204, z: 0.1130899, w: 0.9935848}
+      scale: {x: 0.99999994, y: 0.9999998, z: 0.9999999}
+    - name: Pines.Neck
+      parentName: Pines.Neck
+      position: {x: -0.08396456, y: -0.4103888, z: -0.0024075508}
+      rotation: {x: -0.7048082, y: 0.056966882, z: -0.056966815, w: 0.7048085}
+      scale: {x: 0.712122, y: 0.8015734, z: 0.71212196}
+    - name: Pines.Head
+      parentName: Pines.Neck
+      position: {x: 0.000000048428774, y: 0.3509986, z: 0.000000029802322}
+      rotation: {x: 0.054176185, y: 0.08664102, z: -0.2380159, w: 0.965871}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.99999994}
+    - name: Pines.Head
+      parentName: Pines.Head
+      position: {x: 0.038054347, y: -0.76505685, z: -0.0024066865}
+      rotation: {x: -0.7071066, y: 0.0006248499, z: -0.00062482775, w: 0.7071065}
+      scale: {x: 0.71212196, y: 0.8015734, z: 0.712122}
+    - name: Pines.Head_end
+      parentName: Pines.Head
+      position: {x: -0, y: 0.6124711, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pines.Left_UpperArm
+      parentName: Pines.Torso
+      position: {x: -0.042551614, y: 1.3727298, z: -0.3530397}
+      rotation: {x: 0.72090834, y: 0.0015382769, z: -0.036861178, w: -0.69204766}
+      scale: {x: 0.99999976, y: 0.99999964, z: 0.99999905}
+    - name: Pines.LeftUpperArm
+      parentName: Pines.Left_UpperArm
+      position: {x: 0.024459034, y: 0.2313326, z: -0.509261}
+      rotation: {x: 0.5243461, y: 0.0001112042, z: 0.0002420189, w: 0.8515052}
+      scale: {x: 0.712122, y: 0.8015744, z: 0.71212196}
+    - name: Pines.Left_BottomArm
+      parentName: Pines.Left_UpperArm
+      position: {x: -0.00000010430813, y: 1.0343829, z: -0.00000008381903}
+      rotation: {x: 0.1183613, y: -0.2746643, z: 0.7721049, w: 0.5607175}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: Pines.LeftBottemArm
+      parentName: Pines.Left_BottomArm
+      position: {x: -0.0030018091, y: -0.8521347, z: -0.42271927}
+      rotation: {x: 0.47910446, y: -0.008299202, z: -0.013880479, w: 0.8776089}
+      scale: {x: 0.7121221, y: 0.8015744, z: 0.712122}
+    - name: Pines.Left_BottomArm.002
+      parentName: Pines.Left_BottomArm
+      position: {x: -0.000000037252903, y: 1.2575815, z: -0.00000023841858}
+      rotation: {x: 0.06386326, y: -0.32291996, z: 0.0664928, w: 0.9419251}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Pines.LeftHand
+      parentName: Pines.Left_BottomArm.002
+      position: {x: 0.062659025, y: -1.9730048, z: -0.8561148}
+      rotation: {x: 0.5691266, y: 0.00095186016, z: -0.0006588056, w: 0.8222492}
+      scale: {x: 0.7121219, y: 0.80157447, z: 0.71212214}
+    - name: Pines.Left_BottomArm.002_end
+      parentName: Pines.Left_BottomArm.002
+      position: {x: -0, y: 0.6563961, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pines.Right_UpperArm
+      parentName: Pines.Torso
+      position: {x: -0.042551138, y: 1.3727303, z: 0.34151158}
+      rotation: {x: 0.7140673, y: -0.081078194, z: -0.11526992, w: 0.6857457}
+      scale: {x: 1, y: 1.0000001, z: 1.0000002}
+    - name: Pines.RightUpperArm
+      parentName: Pines.Right_UpperArm
+      position: {x: 0.024169505, y: 0.23435527, z: 0.5032797}
+      rotation: {x: 0.851505, y: 0.000092367176, z: 0.00035413587, w: 0.52434635}
+      scale: {x: 0.7121217, y: 0.801573, z: 0.7121219}
+    - name: Pines.BigNeedle
+      parentName: Pines.Right_UpperArm
+      position: {x: 0.000000059604645, y: 1.0343826, z: 0.00000033527613}
+      rotation: {x: -0.51621443, y: 0.76645917, z: 0.3714597, w: 0.08989269}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000002}
+    - name: Pines.BigNeedle
+      parentName: Pines.BigNeedle
+      position: {x: 0.021643966, y: -0.8398709, z: 0.43366396}
+      rotation: {x: 0.8723799, y: -0.0003917381, z: -0.026033705, w: 0.48813462}
+      scale: {x: 0.7121219, y: 0.80157286, z: 0.7121219}
+    - name: Pines.BigNeedle_end
+      parentName: Pines.BigNeedle
+      position: {x: -0, y: 1.5571082, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pines.Left_UpperLeg
+      parentName: Pines.Pelvis
+      position: {x: -0.28121346, y: 0.12514827, z: -0.29804608}
+      rotation: {x: 0.9671234, y: -0.19650131, z: -0.14296567, w: -0.07496966}
+      scale: {x: 1.0000002, y: 0.99999994, z: 1}
+    - name: Pines.LeftUpperLeg
+      parentName: Pines.Left_UpperLeg
+      position: {x: 0.1418944, y: -1.3055366, z: -0.30582926}
+      rotation: {x: 0.7098472, y: -0.00220778, z: -0.0023489182, w: 0.7043483}
+      scale: {x: 0.71212184, y: 0.8015734, z: 0.7121219}
+    - name: Pines.Left_BottomLeg
+      parentName: Pines.Left_UpperLeg
+      position: {x: 0.000000010841177, y: 1.6950836, z: -0.000000037252903}
+      rotation: {x: -0.028973993, y: -0.011101979, z: -0.33515507, w: 0.94165194}
+      scale: {x: 0.9999998, y: 0.9999999, z: 1}
+    - name: Pines.LeftBottomLeg
+      parentName: Pines.Left_BottomLeg
+      position: {x: -0.15066028, y: 1.7748005, z: 4.87316}
+      rotation: {x: 0.0000000011618682, y: -0.0000000039234394, z: -5.9882144e-10, w: 1}
+      scale: {x: 0.712122, y: 0.8015734, z: 0.7121221}
+    - name: Pines.Left_BottomLeg.001
+      parentName: Pines.Left_BottomLeg
+      position: {x: -0.00000010803342, y: 1.772394, z: 0.000000049360096}
+      rotation: {x: 0.043774657, y: -0.02134947, z: 0.87317437, w: 0.48496854}
+      scale: {x: 0.99999994, y: 1.0000002, z: 1}
+    - name: Pines.LeftFoot
+      parentName: Pines.Left_BottomLeg.001
+      position: {x: -4.7277584, y: -0.6454422, z: -0.2769996}
+      rotation: {x: 0.5299381, y: -0.46815184, z: -0.46815136, w: 0.52993757}
+      scale: {x: 0.7121217, y: 0.80157334, z: 0.712122}
+    - name: Pines.Left_BottomLeg.001_end
+      parentName: Pines.Left_BottomLeg.001
+      position: {x: -0, y: 0.74171984, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pines.Right_UpperLeg
+      parentName: Pines.Pelvis
+      position: {x: -0.095438905, y: -0.010210857, z: 0.2865184}
+      rotation: {x: 0.89422405, y: -0.11423151, z: -0.42870536, w: 0.059381552}
+      scale: {x: 0.99999976, y: 0.99999964, z: 0.99999994}
+    - name: Pines.RightUpperLeg
+      parentName: Pines.Right_UpperLeg
+      position: {x: 0.14200783, y: -1.3084205, z: 0.286421}
+      rotation: {x: 0.70777243, y: -0.0022020023, z: -0.0023541623, w: 0.7064332}
+      scale: {x: 0.7121223, y: 0.8015735, z: 0.7121222}
+    - name: Pines.Right_BottomLeg
+      parentName: Pines.Right_UpperLeg
+      position: {x: -0.000000063329935, y: 1.6950351, z: 0.0000000949949}
+      rotation: {x: 0.10358028, y: -0.43980253, z: -0.2327486, w: 0.8612044}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Pines.RightBottomLeg
+      parentName: Pines.Right_BottomLeg
+      position: {x: 0.3373506, y: -2.9834855, z: 0.3285675}
+      rotation: {x: 0.70244277, y: 0.021272562, z: 0.02019511, w: 0.71113557}
+      scale: {x: 0.7121222, y: 0.80157346, z: 0.71212214}
+    - name: Pines.Right_BottomLeg.002
+      parentName: Pines.Right_BottomLeg
+      position: {x: -0.00000008195639, y: 1.7725205, z: -0.000000011175871}
+      rotation: {x: 0.16250762, y: 0.09361372, z: 0.7347199, w: 0.6519314}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pines.RightFoot
+      parentName: Pines.Right_BottomLeg.002
+      position: {x: -4.7277603, y: -0.64544094, z: 0.270279}
+      rotation: {x: 0.52993786, y: -0.46815166, z: -0.46815157, w: 0.5299377}
+      scale: {x: 0.7121223, y: 0.8015735, z: 0.71212226}
+    - name: Pines.Right_BottomLeg.002_end
+      parentName: Pines.Right_BottomLeg.002
+      position: {x: -0, y: 0.74171984, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: HeadTracker
+      parentName: PinesIdolAnimation(Clone)
+      position: {x: -4.9740334, y: -0.002673626, z: 4.9233217}
+      rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: HeadTracker_end
+      parentName: HeadTracker
+      position: {x: -0, y: 0.51529217, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
