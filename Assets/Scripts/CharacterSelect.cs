@@ -17,8 +17,6 @@ public class CharacterSelect : MonoBehaviour
     private bool player1Picked = false;
     private bool player2Picked = false;
 
-    private bool singleplayerPicked = false;
-
     private GameObject player1Character;
 
     void Start()
@@ -61,6 +59,7 @@ public class CharacterSelect : MonoBehaviour
         {
             currentPlayer = 2;
             continueButton.interactable = false;
+            singleplayerButton.interactable = false;
 
             // Disable the button for the selected character to prevent duplication
             if (player1Character == pineCharacterPrefab)
@@ -91,7 +90,12 @@ public class CharacterSelect : MonoBehaviour
 
     void UpdateUIForPlayer()
     {
-        playerSelectText.text = $"Player {currentPlayer}, choose your character and then click 'Ready'!";
+        if (currentPlayer == 1)
+        {
+            playerSelectText.text = $"Player {currentPlayer}, choose your character and then click 'Ready'! or 'Singleplayer'!";
+        }
+        else { playerSelectText.text = $"Player {currentPlayer}, choose your character and then click 'Ready'!"; }
+            
         if (pineButton.interactable)
             pineButton.Select();
         else
