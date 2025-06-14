@@ -349,6 +349,26 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 033c926f-a306-4c23-9baa-1a6cdbbd1147
     m_ActionName: Player/Block[/XInputControllerWindows/leftTrigger,/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 78742efa73d78be49aafcb8015ef481f, type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c670bd40-ae71-4159-a769-2ba9046bb264
+    m_ActionName: Player/Join Pine[/XInputControllerWindows/buttonWest,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7db81615-7a67-4ae0-9917-51548918e5cd
+    m_ActionName: Player/Join Racc[/XInputControllerWindows/buttonEast,/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

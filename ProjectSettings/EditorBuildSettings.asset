@@ -11,6 +11,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/KarlTestScene.unity
     guid: 2d60c132663905d4a88bb8b9281574a9
+  - enabled: 1
+    path: Assets/Scenes/OfficialScenes/CharacterSelectionMultiplayer.unity
+    guid: 59a5629638e642245a6d03da96c623f3
+  - enabled: 1
+    path: Assets/Scenes/LilyTestScene.unity
+    guid: 17d7297e6ee2a8c44aa369848cfdc3da
+  - enabled: 1
+    path: Assets/Scenes/OfficialScenes/CharacterSelectionSinglePlayer.unity
+    guid: a34869aab5c5ed04abf95ff5b99dcd4e
+  - enabled: 1
+    path: Assets/Scenes/OfficialScenes/LorePage.unity
+    guid: b0960f9a097c1a944b567117d2c5ef5e
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 142e8a7b12614204c84337dc18f81c0d, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 8516fb28af016b44fa77b65a0eb241c9, type: 3}

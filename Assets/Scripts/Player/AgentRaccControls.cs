@@ -21,6 +21,8 @@ public class AgentRaccControls : MonoBehaviour
             Vector3 shootDirection = Quaternion.Euler(0, angleOffset, 0) * transform.forward;
             rigidBody.velocity = shootDirection * speed;
         }
+
+        Destroy(bullet, 5);
     }
     public void TripleShot()
     {
