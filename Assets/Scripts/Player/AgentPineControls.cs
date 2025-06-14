@@ -28,8 +28,10 @@ public class AgentPineControls : MonoBehaviour
     public PlayerController Controller;
     public BasePlayer player;
 
-    public bool wasDowned = false;
+    private bool wasDowned = false;
     private bool isReviving = false;
+    
+
 
     private void Start()
     {
@@ -76,6 +78,16 @@ public class AgentPineControls : MonoBehaviour
             isReviving = true;
             ResetAllStates();
             StartCoroutine(Revive());
+        }
+
+        if(Controller.isBlocking)
+        {
+
+        }
+
+        if(Controller.isAttacking)
+        {
+
         }
     }
 

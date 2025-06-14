@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     public GameObject cam; // Reference to your camera GameObject
     float speed = 4.0f;
 
+    public bool isBlocking = false;
+    public bool isAttacking = false;
+
     // Camera rotation variables
     public float lookSpeedX = 2.0f, lookSpeedY = 2.0f;
     public float minLookY = -80f, maxLookY = 80f;
