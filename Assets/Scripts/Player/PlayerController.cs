@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     int id;
     public Vector3 moveInput;
     public GameObject cam; // Reference to your camera GameObject
-    float speed = 4.0f;
+    public float speed = 4.0f;
 
     public bool isBlocking = false;
     public bool isAttacking = false;
@@ -45,8 +45,8 @@ public class PlayerController : MonoBehaviour
         if (!ensnared)
         {
             var v = context.ReadValue<Vector2>();
-            moveInput.x = v.x;
-            moveInput.z = v.y;
+            moveInput.x = v.x * speed;
+            moveInput.z = v.y* speed;
         }
         else
         {

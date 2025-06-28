@@ -7393,7 +7393,7 @@ MonoBehaviour:
   moveSpeed: 0.3
   fadeCanvasGroup: {fileID: 1506891520}
   fadeDuration: 3
-  nextSceneName: KarlTestScene
+  nextSceneName: CharacterSelectionMultiplayer
   MainMenu: {fileID: 1966351661}
 --- !u!4 &1107285573
 Transform:

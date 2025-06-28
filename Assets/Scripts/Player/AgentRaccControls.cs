@@ -11,6 +11,29 @@ using UnityEngine;
 public class AgentRaccControls : MonoBehaviour
 {
     public GameObject bulletPrefab;
+
+    //This handles pines animations and attack/block
+    public Animator raccIdol;
+    public Animator raccAttack;
+    public Animator raccDowned;
+    public Animator raccRevived;
+    public Animator raccRunning;
+
+    public GameObject Idol;
+    public GameObject IdolBody; //Just the torso for running
+    public GameObject RunningLegs;
+    public GameObject AttackingBody;
+    public GameObject Downed;
+    public GameObject Revived;
+    public GameObject raccArms;
+
+    public PlayerController Controller;
+    public BasePlayer player;
+
+    private bool wasDowned = false;
+    private bool isReviving = false;
+
+
     public void Shoot(float angleOffset, float speed)
     {
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
@@ -30,5 +53,84 @@ public class AgentRaccControls : MonoBehaviour
         Shoot(5, 8);
         Shoot(-5, 8);
         GetComponent<AudioSource>().Play();
+    }
+
+    private void Start()
+    {
+        ResetAllStates();
+        Idol.SetActive(true);
+    }
+
+    private void Update()
+    {
+        // Handle movement animations
+        if (!wasDowned)
+        {
+            if ((Controller.moveInput.x != 0 || Controller.moveInput.z != 0))
+            {
+                Idol.SetActive(false);
+                RunningLegs.SetActive(true);
+                IdolBody.SetActive(true);
+            }
+            else
+            {
+                Idol.SetActive(true);
+                RunningLegs.SetActive(false);
+                IdolBody.SetActive(false);
+            }
+        }
+
+        // Handle downed state
+        if (player.currentHealth <= 0)
+        {
+            if (!wasDowned)
+            {
+                // Only reset and play when first entering downed state
+                ResetAllStates();
+                Controller.ensnared = true;
+                Controller.OnDowned();
+                Downed.SetActive(true);
+                raccDowned.Play("Downed", -1, 0f); // Restart the animation from beginning
+                wasDowned = true;
+            }
+        }
+        else if (wasDowned && player.currentHealth > 0 && !isReviving)
+        {
+            isReviving = true;
+            ResetAllStates();
+            StartCoroutine(Revive());
+        }
+
+        if (Controller.isBlocking)
+        {
+
+        }
+
+        if (Controller.isAttacking)
+        {
+
+        }
+    }
+
+    IEnumerator Revive()
+    {
+        Revived.SetActive(true);
+        raccRevived.Play("Revived", -1, 0f); // Restart the animation from beginning
+        yield return new WaitForSeconds(1.1f);
+        Revived.SetActive(false);
+        Controller.ensnared = false;
+        wasDowned = false;
+        isReviving = false;
+        Controller.OnRevived();
+    }
+
+    private void ResetAllStates()
+    {
+        Idol.SetActive(false);
+        IdolBody.SetActive(false);
+        RunningLegs.SetActive(false);
+        AttackingBody.SetActive(false);
+        Downed.SetActive(false);
+        Revived.SetActive(false);
     }
 }

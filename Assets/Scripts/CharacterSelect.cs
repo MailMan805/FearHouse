@@ -75,7 +75,7 @@ public class CharacterSelect : MonoBehaviour
         }
         else if (currentPlayer == 2 && player2Picked)
         {
-            SceneManager.LoadScene("LilyTestScene");
+            SceneManager.LoadScene("JadenKarlScene");
         }
     }
 

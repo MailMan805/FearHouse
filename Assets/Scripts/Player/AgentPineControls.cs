@@ -45,7 +45,7 @@ public class AgentPineControls : MonoBehaviour
         // Handle movement animations
         if(!wasDowned)
         {
-            if ((Controller.moveInput.x != 0 || Controller.moveInput.z != 0))
+            if ((Controller.moveInput.x > 0 || Controller.moveInput.z > 0))
             {
                 Idol.SetActive(false);
                 RunningLegs.SetActive(true);

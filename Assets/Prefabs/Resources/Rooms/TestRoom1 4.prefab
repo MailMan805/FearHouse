@@ -228,6 +228,8 @@ MonoBehaviour:
   east: 0
   west: 1
   newNode: 1
+  isStart: 0
+  isUsable: 1
 --- !u!1 &799572672565832694
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,7 +677,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029504295}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 804499113405056625}
@@ -696,6 +698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tokenCost: 1
+  isStart: 0
 --- !u!1 &3319897512796278801
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,6 +1032,8 @@ MonoBehaviour:
   east: 0
   west: 0
   newNode: 1
+  isStart: 0
+  isUsable: 1
 --- !u!1 &3557553975426655296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,6 +1157,8 @@ MonoBehaviour:
   east: 1
   west: 0
   newNode: 1
+  isStart: 0
+  isUsable: 1
 --- !u!1 &4214884708047005301
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,6 +1703,8 @@ MonoBehaviour:
   east: 0
   west: 0
   newNode: 1
+  isStart: 0
+  isUsable: 1
 --- !u!1 &6590607751229786369
 GameObject:
   m_ObjectHideFlags: 0

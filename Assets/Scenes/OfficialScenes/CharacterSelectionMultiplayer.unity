@@ -2023,7 +2023,7 @@ MonoBehaviour:
   pineButton: {fileID: 2040225539}
   raccButton: {fileID: 861656313}
   continueButton: {fileID: 67473431}
-  singleplayerButton: {fileID: 0}
+  singleplayerButton: {fileID: 38803397}
   playerSelectText: {fileID: 1284268693}
 --- !u!1 &1204444485
 GameObject:
