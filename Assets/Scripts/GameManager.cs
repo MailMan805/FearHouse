@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
 
     private void spawnEnemy()
     {
-        GameObject enemy = spawnableEnemies[Random.Range(0, spawnableEnemies.Length)];
+        GameObject enemy = Instantiate(spawnableEnemies[Random.Range(0, spawnableEnemies.Length)]) as GameObject;
         GameObject[] spawnNodes = GameObject.FindGameObjectsWithTag("Spawner");
         GameObject node = spawnNodes[Random.Range(1, spawnNodes.Length)];
         if (node.GetComponent<SpawnData>().validSpawn(enemy.GetComponent<EnemyAI>().name) && node.GetComponent<SpawnData>().isAvailable)
@@ -95,6 +95,9 @@ public class GameManager : MonoBehaviour
             genEnemy.transform.position = node.transform.position;
             node.GetComponent<SpawnData>().timer = enemy.GetComponent<EnemyAI>().cooldown;
             node.GetComponent<SpawnData>().isAvailable = false;
+        } else
+        {
+            Destroy(enemy);
         }
     }
 
